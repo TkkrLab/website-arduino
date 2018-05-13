@@ -1,0 +1,32 @@
+baseurl = "/"
+languageCode = "nl-NL"
+title = "TkkrLab Arduino cursus"
+paginate = 5
+theme = "tkkrlab-docs"
+
+enableRobotsTXT = true
+canonifyURLs = true
+
+[Params]
+  subtitle = ""
+  description = "TkkrLab hackerspace"
+  powered_by = ""
+  author = "Tkkrlab"
+  copyright = ""
+  date_format = "02-01-2006"
+  showVisitedLinks = false
+  disableInlineCopyToClipBoard = true
+  themeVariant = "tkkrlab"
+  
+[menu]
+  [[menu.shortcuts]]
+    name = "Wiki"
+    url = "https://www.tkkrlab.nl/wiki"
+    weight = 0
+  [[menu.shortcuts]]
+    name = "Tkkrlab website"
+    url = "https://www.tkkrlab.nl/"
+    weight = 1
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
