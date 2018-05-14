@@ -55,7 +55,7 @@ Voor de nodeMCU zijn zijn er verschillende methoden om deze te programmeren. Je 
 ‘Webserver’ voor aansturen van bv lampen / LED 
 - Gebruik voor de Pin de notatie ‘D1’ voor digitale pin 1. (alleen nummer kan verwarring geven)
 
-![nodemcu_led_breadboard](images/nodemcu_led_breadboard.jpg)
+<image src="images/nodemcu_led_breadboard.jpg" style="width: 600px" alt="nodemcu-led-breadboard"/>
 
 # De Software
 
