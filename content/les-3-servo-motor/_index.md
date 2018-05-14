@@ -10,11 +10,11 @@ In dit hoofstuk leer je hoe je met behulp van de servo library een servomotor ku
 
 |                                       | Item                                | Aantal |
 |---------------------------------------|-------------------------------------|--------|
-| ![uno](/images/arduino-uno-2.jpg)     | Arduino Uno                         |      1 |
-| ![breadboard](/images/breadboard.jpg) | Breadboard                          |      1 |
-| ![draden](/images/draden.jpg)         | Breadboard draden                   |     10 |
-| ![servo](/images/servo.jpg)           | Servo motor                         |      1 |
-| ![potmeter](/images/potmeter.jpg)     | Potentiometer (variabele weerstand) |      1 |
+| ![uno](images/arduino-uno-2.jpg)     | Arduino Uno                         |      1 |
+| ![breadboard](images/breadboard.jpg) | Breadboard                          |      1 |
+| ![draden](images/draden.jpg)         | Breadboard draden                   |     10 |
+| ![servo](images/servo.jpg)           | Servo motor                         |      1 |
+| ![potmeter](images/potmeter.jpg)     | Potentiometer (variabele weerstand) |      1 |
 
 # De servo motor
 
@@ -22,7 +22,7 @@ Een servo motor is een motortje met een slim stukje regelelektronica die de moto
 
 Het aansluiten van een kleine servomotor kan heel eenvoudig: maak de `rode` draad vast aan de `5v` aansluiting, de `zwarte` draad aan `GND` en de `gele` draad aan een digitale uitgang.
 
-![breadboard](/images/servo_bb.svg)
+![breadboard](images/servo_bb.svg)
 
 
 Om de servo library te kunnen gebruiken in ons programma moeten we de library eerst toevoegen aan ons programma. Dit kan met het `#include` commando. In dit geval willen we de servo library toevoegen, dat doen we met `#include <Servo.h>`.
@@ -63,7 +63,7 @@ Dit programma laat het servomotortje draaien van van 0 tot 90 graden, waarna het
 
 Als je naast de servomotor het schema met de variabele weerstand van het vorige hoofdstuk opbouwt kan je door aan de variabele weerstand te draaien de positie van de servomotor aanpassen.
 
-![potmeter-en-servo](/images/potmeterenservo_bb.svg)
+![potmeter-en-servo](images/potmeterenservo_bb.svg)
 
 Het programma om de variabele weerstand aan de servomotor te koppelen is als volgt:
 

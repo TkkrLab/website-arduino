@@ -10,11 +10,11 @@ In dit hoofdstuk leer je hoe je een relais kunt aansturen met een Arduino. Softw
 
 |                                       | Item                                | Aantal |
 |---------------------------------------|-------------------------------------|--------|
-| ![uno](/images/arduino-uno-2.jpg)     | Arduino Uno                         |      1 |
-| ![breadboard](/images/breadboard.jpg) | Breadboard                          |      1 |
-| ![draden](/images/draden.jpg)         | Breadboard draden                   |     10 |
-| ![relay](/images/relay.jpg)           | Relais                              |      1 |
-| ![diode](/images/diode2.jpg)          | Diode                               |      1 |
+| ![uno](images/arduino-uno-2.jpg)     | Arduino Uno                         |      1 |
+| ![breadboard](images/breadboard.jpg) | Breadboard                          |      1 |
+| ![draden](images/draden.jpg)         | Breadboard draden                   |     10 |
+| ![relay](images/relay.jpg)           | Relais                              |      1 |
+| ![diode](images/diode2.jpg)          | Diode                               |      1 |
 
 
 # Het aansturen van een relais
@@ -39,11 +39,11 @@ Door de base pin via een weerstand aan te sluiten op een digitale uitgang van de
 
 Het laatste onderdeel dat wordt gebruikt in het schema is een diode. Een diode is een component dat in één richting stroom doorlaat en in de andere richting niet. De diode is in sper over de elektromagneet geplaatst om de spanning die ontstaat tijdens het uitschakelen van de spoel weg te nemen. Zonder de diode zal de vrijkomende energie uit de spoel de transistor beschadigen.
 
-![schema](/images/relais_schema.png)
+![schema](images/relais_schema.png)
 
-![diode](/images/diode.jpg)
+![diode](images/diode.jpg)
 
-![pinout](/images/relay_pinout.png)
+![pinout](images/relay_pinout.png)
 
 # Software
 

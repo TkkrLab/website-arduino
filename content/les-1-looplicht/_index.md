@@ -10,40 +10,40 @@ In dit hoofdstuk leer je hoe je een looplicht van LEDs kunt bouwen met een Ardui
 
 |                                       | Item              | Aantal |
 |---------------------------------------|-------------------|--------|
-| ![leds](/images/leds.jpg)             | LEDs              |      8 |
-| ![weerstand](/images/weerstand.jpg)   | Weerstand 1000Ω   |      8 |
-| ![breadboard](/images/breadboard.jpg) | Breadboard        |      1 |
-| ![draden](/images/draden.jpg)         | Breadboard draden |     10 |
-| ![uno](/images/arduino-uno-2.jpg)     | Arduino Uno       |      1 |
+| ![leds](images/leds.jpg)             | LEDs              |      8 |
+| ![weerstand](images/weerstand.jpg)   | Weerstand 1000Ω   |      8 |
+| ![breadboard](images/breadboard.jpg) | Breadboard        |      1 |
+| ![draden](images/draden.jpg)         | Breadboard draden |     10 |
+| ![uno](images/arduino-uno-2.jpg)     | Arduino Uno       |      1 |
 
 # De hardware
 
 In deze les gaat je een schakeling opbouwen op een breadboard. Een breadboard bevat gaatjes die in een patroon met elkaar verbonden zijn, waardoor je elektrische verbindingen kunt maken tussen de verschillende componenten die je er in plaatst.
 
 De gaatjes van een breadboard zijn op de volgende manier met elkaar verbonden: 
-![breadboard2](/images/breadboard2.png)
+![breadboard2](images/breadboard2.png)
 
 De zwarte lijntjes worden meestal gebruikt om componenten aan te sluiten, terwijl de rode en blauwe lijn als voedingsrails gebruikt worden.
 
 We gaan met de aan het begin van dit hoofdstuk genoemde componenten een schakeling bouwen. Het schema van de schakeling ziet er zo uit:
 
-![schema-led](/images/schema-led.png)
+![schema-led](images/schema-led.png)
 
 In het echt ziet de schakeling er zo uit:
 
-![real-led](/images/real-led.png)
+![real-led](images/real-led.png)
 
 We beginnen met het monteren van de leds op het breadboard:
 
-![looplicht-breadboard](/images/looplicht_bb.svg)
+![looplicht-breadboard](images/looplicht_bb.svg)
 
-![looplicht-breadboard](/images/looplicht_schema.svg)
+![looplicht-breadboard](images/looplicht_schema.svg)
 
 In een schema wordt een led als volgt getekend:
 
-![symbol-led](/images/symbol-led.jpg)
+![symbol-led](images/symbol-led.jpg)
 
-![led](/images/led.jpg)
+![led](images/led.jpg)
 
 Hierbij zien we direct dat een led een positieve en een negatieve aansluiting heeft.
 

@@ -10,19 +10,19 @@ In dit hoofdstuk leer je hoe je een HD44780 karakterdisplay aan kunt sluiten op 
 
 |                                       | Item              | Aantal |
 |---------------------------------------|-------------------|--------|
-| ![lcd](/images/lcd-small.jpg)         | HD44780 LCD       |      1 |
-| ![weerstand](/images/weerstand.jpg)   | Potmeter          |      1 |
-| ![breadboard](/images/breadboard.jpg) | Breadboard        |      1 |
-| ![draden](/images/draden.jpg)         | Breadboard draden |     10 |
-| ![uno](/images/arduino-uno-2.jpg)     | Arduino Uno       |      1 |
+| ![lcd](images/lcd-small.jpg)         | HD44780 LCD       |      1 |
+| ![weerstand](images/weerstand.jpg)   | Potmeter          |      1 |
+| ![breadboard](images/breadboard.jpg) | Breadboard        |      1 |
+| ![draden](images/draden.jpg)         | Breadboard draden |     10 |
+| ![uno](images/arduino-uno-2.jpg)     | Arduino Uno       |      1 |
 
 # De hardware
 
 Zorg er altijd voor dat je alle voedingsspanningen los koppelt voordat je het aan het circuit werkt (USB niet aangesloten op de pc en geen power adapter aangesloten op de voedingsplug).
 
-![breadboard](/images/lcd_bb.svg)
+![breadboard](images/lcd_bb.svg)
 
-![schema](/images/lcd_schematic.png)
+![schema](images/lcd_schematic.png)
 
 # De software
 

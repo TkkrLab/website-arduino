@@ -11,7 +11,7 @@ In dit hoofdstuk bespreken we basistheorie voor het lezen van een schema en de e
 Elektrische schakelingen worden in documentatie vaak in een schematische weergave getoond, omdat een schema vaak veel duidelijker de verbindingen in een elektrisch circuit kan laten zien dan een foto.
 
 Een voorbeeld van een schema dat laat zien hoe je een relais aan kunt sluiten op een Arduino ziet er als volgt uit:
-![schema](/images/relais_schema.png)
+![schema](images/relais_schema.png)
 
 In het elektrische circuit dat hierboven staat afgebeeld zijn verschillende componenten gebruikt: een weerstand, een transistor, een diode en het relais.
 
@@ -26,9 +26,9 @@ Weerstanden hebben geen polariteit: het maakt niet uit in welke richting een wee
 
 Aan de hand van de kleuren op de weerstand kun je aflezen welke waarde deze heeft.
 
-![symbool](/images/weerstand_symbool.png)
+![symbool](images/weerstand_symbool.png)
 
-![foto](/images/weerstanden.png)
+![foto](images/weerstanden.png)
 
 ## De diode
 Een didode is een halfgeleidercomponent dat slechts in één richting stroom laat vloeien: van de anode (+) naar de cathode (-). Het component werkt dus als een terugslagventiel voor stroom.

@@ -6,16 +6,16 @@ weight: 6
 
 ## Benodigde onderdelen
 
-|                                       | Item              | Aantal |
-|---------------------------------------|-------------------|--------|
-| ![wimos_nodemcu_v3](/images/wimos_nodemcu_v3.jpg) | Wimos nodeMCU |      1 |
-| ![weerstand](/images/weerstand.jpg)   | Weerstand 1000Ω   |      1 |
-| ![breadboard](/images/breadboard.jpg) | Breadboard        |      1 |
-| ![draden](/images/draden.jpg)         | Breadboard draden |      2 |
+|                                                   | Item              | Aantal |
+|---------------------------------------------------|-------------------|--------|
+| ![wemos_nodemcu_v3](images/wemos_nodemcu_v3.jpg)  | Wemos nodeMCU     |      1 |
+| ![weerstand](images/weerstand.jpg)                | Weerstand 1000Ω   |      1 |
+| ![breadboard](images/breadboard.jpg)              | Breadboard        |      1 |
+| ![draden](images/draden.jpg)                      | Breadboard draden |      2 |
 
 # De hardware
 
-We gebruiken in onze workshop de Wimos nodeMCU maar er zijn vele alternatieve boards beschikbaar om met domotica projecten aan de slag te gaan.
+We gebruiken in onze workshop de Wemos NodeMCU maar er zijn vele alternatieve boards beschikbaar om met domotica projecten aan de slag te gaan.
 
 Meestal wil je bijvoorbeeld met je telefoon webbrowser een schakelaar aan of uit zetten, dit kan via IoT sensoren en schakelaars. Zolang deze alleen beschikbaar zijn in je eigen netwerk hoef je niet al te veel zorgen te maken over beveiliging, maar als deze voor de hele wereld te bereiken is moet je deze wel goed beveiligen. We besteden hier geen specifieke aandacht aan in onze workshop maar wees hier bewust van. 
 
@@ -51,7 +51,7 @@ Voor de nodeMCU zijn zijn er verschillende methoden om deze te programmeren. Je 
 ‘Webserver’ voor aansturen van bv lampen / LED 
 - Gebruik voor de Pin de notatie ‘D1’ voor digitale pin 1. (alleen nummer kan verwarring geven)
 
-![nodemcu_led_breadboard](/images/nodemcu_led_breadboard.jpg)
+![nodemcu_led_breadboard](images/nodemcu_led_breadboard.jpg)
 
 # De Software
 

@@ -10,10 +10,10 @@ Dit hoofdstuk beschrijft het gebruik van de seriële verbinding tussen het Ardui
 
 |                                       | Item                                | Aantal |
 |---------------------------------------|-------------------------------------|--------|
-| ![uno](/images/arduino-uno-2.jpg)     | Arduino Uno                         |      1 |
-| ![breadboard](/images/breadboard.jpg) | Breadboard                          |      1 |
-| ![draden](/images/draden.jpg)         | Breadboard draden                   |     10 |
-| ![potmeter](/images/potmeter.jpg)     | Potentiometer (variabele weerstand) |      1 |
+| ![uno](images/arduino-uno-2.jpg)     | Arduino Uno                         |      1 |
+| ![breadboard](images/breadboard.jpg) | Breadboard                          |      1 |
+| ![draden](images/draden.jpg)         | Breadboard draden                   |     10 |
+| ![potmeter](images/potmeter.jpg)     | Potentiometer (variabele weerstand) |      1 |
 
 # Berichten sturen vanaf de Arduino
 
@@ -62,11 +62,11 @@ void loop() {
 
 Nadat je dit programma geupload hebt naar het Arduino bord kan je de "seriële monitor" openen door op het het knopje met het vergrootglas rechts bovenin de menubalk te klikken.
 
-![ide](/images/arduino-ide-serial.png)
+![ide](images/arduino-ide-serial.png)
 
 Controleer of de baudrate onder in het scherm het zelfde staat ingesteld als de snelheid in het Arduino programma. Je zou nu het volgende moeten zien:
 
-![monitor](/images/monitor.png)
+![monitor](images/monitor.png)
 
 
 ### Voorbeeld 2
@@ -97,7 +97,7 @@ Wanneer de analoge ingang nergens op aangesloten is zal de Arduino omgevingsruis
 
 De potmeter kan je als volgt aansluiten op de Arduino:
 
-![schema](/images/potmeter_bb.svg)
+![schema](images/potmeter_bb.svg)
 
 
 Als je nu aan de potmeter draait zul je zien dat de waarde in de seriële monitor veranderd. Dit zal er als volgt uitzien, bij jouw zullen de gemeten waarden anders zijn:
@@ -113,7 +113,7 @@ Als je nu aan de potmeter draait zul je zien dat de waarde in de seriële monito
 
 Het is ook mogelijk deze getallen te plotten in een grafiek. U kunt de seriële plotter openen door de seriële monitor te sluiten en in het menu `Tools` op de keuze `Serial Plotter` te klikken.
 
-![plotter](/images/plotter.png)
+![plotter](images/plotter.png)
 
 
 # Berichten ontvangen op de Arduino
