@@ -39,9 +39,9 @@ Arduino is een open source platform bestaande uit een stukje hardware en een com
 
 Tijdens deze cursus gaan we werken met een Arduino UNO. Dat is een printplaatje dat een “ATMEGA328P” microcontroller van Atmel bevat. Voor die microcontroller kan je met de Arduino software zelf een besturingsprogramma maken.
 
-![Arduino Uno](/images/arduino-uno-2.jpg)
+![Arduino Uno](images/arduino-uno-2.jpg)
 
-![Arduino Uno](/images/atmega328p.jpg)
+![Arduino Uno](images/atmega328p.jpg)
 
 
 Een microcontroller is een soort mini-computertje. De ATMEGA chip bevat een stukje opslaggeheugen, RAM, een processor. Daarnaast bevat de chip hardware om met de buitenwereld te communiceren: via generieke in/uitgangs pinnen, meerdere soorten seriële poorten en een analoog naar digitaal omzetter.
