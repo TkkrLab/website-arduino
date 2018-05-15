@@ -52,6 +52,9 @@ We gebruiken hier een `while loop`. Een while loop is een lus die wordt uitgevoe
 
 In het programma wachten we tot de wifi verbinding is opgebouwd.
 
+We gebruiken hier ook de String object, deze heeft een aantal functies die het eenvoudiger maakt om hier mee te werken. Functie die we in de programmatuur gebruiken is `zoekinstring.indexOf("zoeknaar")` deze geeft de positie waar deze is gevonden en de `zoekinstring` of -1 indien deze niet is gevonden.
+Met de methode `zoekinstring.substring(3,4)` geeft een stukje van de string terug vanaf positie 3 en 4 tekens lang. Voor meer string methoden zie de [Arduino Reference] (https://www.arduino.cc/reference/en/language/variables/data-types/stringobject/)
+
 Met de `String web=` word een webpagina gemaakt die je kunt zien op de browser kunt zien. Om een webpagina te maken moet je specifieke layout gebruiken zoals <tags> e.d. Als je meer over HTML wil weten check dan  [w3school] (https://www.w3schools.com/html/default.asp).
 
 
