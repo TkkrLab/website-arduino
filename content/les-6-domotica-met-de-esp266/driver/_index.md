@@ -13,8 +13,8 @@ Stap 1 is het downloaden van het stuurprogramma. Wij hebben het stuurprogramma a
 
 [Klik hier om het stuurprogramma te downloaden](/drivers/ch340.zip)
 
-Het driverpakket bestaat uit meerdere bestanden die we hebben gecomprimeerd als een zip archief.
-Nadat u het bestand heeft gedownload moet het bestand worden uitgepakt. Dat doe je zo:
+Het driverpakket bestaat uit meerdere bestanden die zijn ingepakt in een zip archief.
+Nadat u het bestand heeft gedownload moet het bestand worden uitgepakt. Dat kan je doen door met de rechtermuisknop op het zip bestand te klikken en te kiezen voor `Extract all...`.
 
 ![driver-download-stap-1](images/driver-download-1.png)
 

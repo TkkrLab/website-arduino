@@ -8,25 +8,24 @@ weight: 6
 
 |                                                   | Item              | Aantal |
 |---------------------------------------------------|-------------------|--------|
-| ![wemos_nodemcu_v3](images/wemos_nodemcu_v3.jpg)  | Wemos nodeMCU     |      1 |
+| ![wemos_NodeMCU_v3](images/wemos_nodemcu_v3.jpg)  | Wemos nodeMCU     |      1 |
 | ![weerstand](images/weerstand.jpg)                | Weerstand 1000Ω   |      1 |
 | ![breadboard](images/breadboard.jpg)              | Breadboard        |      1 |
 | ![draden](images/draden.jpg)                      | Breadboard draden |      2 |
 
 # De hardware
 
-We gebruiken in onze workshop de Wemos NodeMCU maar er zijn vele alternatieve boards beschikbaar om met domotica projecten aan de slag te gaan.
+We gebruiken in deze workshop de Wemos NodeMCU, een Arduino bordje gebaseerd op de ESP8266 microcontroller van Espressif.
+Nast het Wemos bordje dat we tijdens de workshop gebruiken zijn vele alternatieve bordjes beschikbaar om met domotica projecten aan de slag te gaan.
 
-Meestal wil je bijvoorbeeld met je webbrowser een schakelaar aan of uit zetten, dit kan via IoT processor board zoals de nodeMCU. 
+Door de WiFi verbinding die het bordje dat we in dit onderdeel gebruiken heeft is het mogelijk om je eigen Internet of Things (IoT) apparaat te maken.
 
-## Domotica en veiligheid
-Zolang je domotica alleen beschikbaar zijn in je eigen netwerk hoef je niet al te veel zorgen te maken over beveiliging, maar als deze voor de hele wereld te bereiken is moet je deze wel goed beveiligen. Dit wil dus zeggen dat iedereen hier bij kan en ook een poging kan wagen om je device te hacken, met alle gevolgen van dien. Er zijn genoeg gevallen bekend dat via de web camera of NEST thermostaat een netwerk word binnen gedrongen. 
-We besteden hier geen specifieke aandacht aan in onze workshop maar wees hier bewust van. 
+Tijdens dit onderdeel van de workshop leren we je hoe je vanuit de webbrowser op je computer of telefoon een LED aan en uit kunt zetten. In het menu zijn ook uitgebreidere onderwerpen te vinden zoals het gebruik van Arduino in combinatie met MQTT en met de Athom Homey.
 
 ### nodeMCU met ESP8266
-De ESP is een wifi chip ontwikkeld door Espressif en erg populair in IoT projecten. In deze chip zit een microprocessor met een Wifi functionaliteit die je op de Arduino manier kunt programmeren. In onze cursus gebruiken we de 'Wemos nodeMCU v3', een ‘developer’ board met een USB aansluiting (makkelijk voor het programmeren) en een ESP8266 chip.
+De ESP is een chip ontwikkeld door Espressif en erg populair voor IoT projecten. In de chip zit een microprocessor met een WiFi radio die je met de Arduino IDE kunt programmeren. In onze cursus gebruiken we de 'Wemos nodeMCU v3', een ‘developer’ board met een USB aansluiting (makkelijk voor het programmeren) en een ESP8266 chip.
 
-Je kunt deze nodeMCU programmeren vanuit de vertrouwde Arduino IDE maar hiervoor zul je een aantal hulptools moeten installeren.  Om de tools voor de nodeMCU binnen de Arduino IDE beschikbaar te krijgen moeten we deze hardware toevoegen via de ‘boards manager’. 
+Je kunt deze NodeMCU programmeren vanuit de vertrouwde Arduino IDE maar hiervoor zul je een aantal hulptools moeten installeren.  Om de tools voor de nodeMCU binnen de Arduino IDE beschikbaar te krijgen moeten we deze hardware toevoegen via de ‘boards manager’. 
 
 ### Specificaties
 - Memory : 4 Mb
@@ -42,26 +41,29 @@ Je kunt deze nodeMCU programmeren vanuit de vertrouwde Arduino IDE maar hiervoor
 - Support Smart Link Smart Networking
 
 ### Installeren benodigde software
-Open binnen de Arduino IDE de voorkeuren / preferences en vul bij  “Additional Board Manager URLs” de waarde “http://arduino.esp8266.com/stable/package_esp8266com_index.json” in. Als je hier al een board hebt ingevuld staan kun je een volgende board toevoegen met een komma en dan de board.
-Ga vervolgens naar menu “Tools -> Board” en installeer de “esp8266” platform. Hiermee worden de benodigde extra tools geïnstalleerd in de Arduino IDE.
+Open binnen de Arduino IDE het menu `Bestand` (`Files`) > `Voorkeuren` (`Preferences`) en vul bij  “Additional Board Manager URLs” de URL “http://arduino.esp8266.com/stable/package_esp8266com_index.json” in. Als je hier al een board hebt ingevuld staan kun je een volgende board toevoegen met een komma en dan de board.
 
-Door een afwijkende chip van de seriële poort wordt deze door je systeem niet automatisch wordt herkend. Zie hiervoor de webpagina over ['installeren windows driver'](/les-6-domotica-met-de-esp266/installeren-windows-driver/) 
+Ga vervolgens naar het menu `Tools` > `Board` en installeer het `ESP8266` platform. Hiermee worden de benodigde extra tools geïnstalleerd in de Arduino IDE.
 
-## Programmeren van nodeMCU
+Als de chip voor seriële communicatie op het NodeMCU bordje niet automatisch wordt herkend door Windows moet je het stuurpgramma installeren. Zie hiervoor de pagina ['CH340 driver installatie'](driver/) .
+
+## Programmeren van NodeMCU
 Voor de nodeMCU zijn zijn er verschillende methoden om deze te programmeren. Je kunt het via Lua programmeren (script taal) of op de Arduino manier. In deze cursus gaan we de nodeMCU op de Arduino manier programmeren.
 
-### Voorbeelden ander toepassingen voor nodeMCU 
+### Voorbeelden ander toepassingen voor NodeMCU 
 - Gegevens van site halen en deze weergeven (weer, open/dicht status TkkrLab)
 ‘Webserver’ voor aansturen van bv lampen / LED 
 - Gebruik voor de Pin de notatie ‘D1’ voor digitale pin 1. (alleen nummer kan verwarring geven)
 
-<img src="images/nodemcu_led_breadboard.jpg" style="width: 600px" alt="nodemcu-led-breadboard"/>
+<img src="images/nodemcu_led_breadboard.jpg" style="width: 600px" alt="NodeMCU-led-breadboard"/>
 
 # De Software
 
-We sluiten een LED aan zoals in de eerste led op pin D5. Vervolgens maken we de software die een webpagina maakt en de aansturing van de LEDs regelt.
+We sluiten een LED aan zoals in de hoofdstuk 1 van de workshop, alleen gebruiken we in dit voorbeeld pin D5. Vervolgens maken we software die een webpagina kan laten zien en de aansturing van de LEDs regelt.
 
-We gebruiken hier een 'while waarmee we een lus maken dit word uitgevoerd tot de conditie niet meer waar is. In deze programma wachten we dus zolang tot de wifi verbinding is opgebouwd.
+We gebruiken hier een `while loop`. Een while loop is een lus die wordt uitgevoerd zolang de opgegeven conditie waar is. 
+
+In het programma wachten we tot de wifi verbinding is opgebouwd.
 
 Met de `String web=` word een webpagina gemaakt die je kunt zien op de browser kunt zien. Om een webpagina te maken moet je specifieke layout gebruiken zoals <tags> e.d. Als je meer over HTML wil weten check dan  [w3school] (https://www.w3schools.com/html/default.asp).
 
@@ -268,7 +270,5 @@ void loop() {
   client.print(web);
 }
 ```
-
-
-
-
+## IoT en veiligheid
+In dit onderdeel van de workshop verbinden we Arduinos met WiFi en dus met het internet. Zolang je creaties alleen bereikbaar zijn vanuit je eigen netwerk hoef je niet al te veel zorgen te maken over beveiliging, maar als je creatie voor de hele wereld te bereiken is moet je deze wel goed beveiligen. We besteden aan beveiliging in deze workshop geen specifieke aandacht, maar wees je bewust van mogelijke risicos.
