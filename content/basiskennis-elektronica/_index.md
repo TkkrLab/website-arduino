@@ -1,6 +1,6 @@
 ---
 title: "Basiskennis elektronica"
-date: 2018-05-11
+date: 2018-05-15
 weight: 25
 ---
 
@@ -30,21 +30,29 @@ Aan de hand van de kleuren op de weerstand kun je aflezen welke waarde deze heef
 
 ![foto](images/weerstanden.png)
 
+![symbool](images/weerstand-kleuren.png)
+
 ## De diode
 Een didode is een halfgeleidercomponent dat slechts in één richting stroom laat vloeien: van de anode (+) naar de cathode (-). Het component werkt dus als een terugslagventiel voor stroom.
 
 Er zijn meerdere soorten diodes, welke voor veel verschillende doelen gebruikt worden. Een aantal voorbeelden van het gebruik van diodes zijn: het gelijkrichten van spanning, het limiteren van spanning of als lichtbron: de Light Emitting Diode.
+
+![diode](images/diode.jpg)
 
 ## De LED
 Een LED (of Light Emitting Diode) is een diode die licht uitstraalt wanneer er stroom doorheen loopt.
 
 Net als een normale diode werkt een LED alleen wanneer er stroom loopt van de anode (+) naar de cathode (-).
 
+![led](images/led.jpg)
+![led-symbool](images/led_symbool.png)
+
 ## Spanningsbronnen en “ground”
 Een spanningsbron (bijvoorbeeld een batterij of een voedingsadapter) kan op meerdere manieren worden aangeduid: als “kale” spanningsbron, als pijltje met een spanning of als batterijsymbool. De polariteit staat meestal aangegeven bij het symbool.
 
 Het referentiepunt dat als nulpunt voor spanningen binnen het schema wordt gebruikt heet het “ground” punt. Deze referentiepunten kunnen met de volgende symbolen worden aangeduid:
 
+![sources](images/sources.png)
 
 ## Chips / Integrated Circuits (ICs)
 In moderne schakelingen worden vrijwel altijd chips gebruikt. Chips zijn componenten die van binnen bestaan uit een groot aantal componenten als transistors, condensatoren, spoelen en diodes. Een chip bevat vrijwel altijd een stukje silicium wafer waarop de componenten geetst zijn.
@@ -58,6 +66,9 @@ Condensatoren bestaan uit twee metalen plaatjes die door een met elektrolyt door
 
 Condensatoren bestaan in verschillende typen, waarvan sommige wel en sommige geen gedefinieerde polariteit hebben. Een elektrolytische condensator (links) heeft een witte rand op de zijkant: die rand geeft aan welke aansluiting de cathode (of negatieve) aansluiting is.
 
+![condensator](images/condensator.png)
+
+![condensator-symbool](images/condensator_symbool.png)
 
 ## De spoel
 Spoelen zijn lange draden die rond een kern gewonden worden. Een spoel werkt als opslag voor stroom. Een spoel zal proberen de lopende stroom door de spoel constant te houden wanneer de spanning over de spoel varieert.
@@ -66,21 +77,30 @@ Het effect wat een spoel laat zien ontstaat doordat de stroom die door de spoel 
 
 Hoewel er in deze cursus geen gebruik gemaakt zal worden van dit component is het goed te weten dat het effect van een spoel ook optreed in langere draden en draden waarin op hoge snelheid veranderende stromen lopen. Het is daarom verstandig om bij digitale communicatie tussen componenten de draden niet langer te maken dan nodig is. Wanneer het gebruik van lange draden noodzakelijk is is het verstandig filters in te bouwen in het circuit.
 
+![spoel](images/spoel.png)
+![spoel-symbool](images/spoel_symbool.png)
 
 # Weerstanden in serie en parallel
 De totale weerstand van in serie geplaatste weerstanden is de som van alle individuele weerstanden. je kunt de weerstandswaarden dus gewoon bij elkaar optellen.
 
+![serie](images/series.gif)
+
 De totale weerstand van parallel geplaatste weerstanden is iets ingewikkelder. De totale weerstand van parallel geplaatste weerstanden is namelijk de inverse van de som van de inverse van iedere individuele weerstandswaarde.
 
+![parallel](images/parallel.gif)
+
+1 / R1 + 1 / R2 = 1 / Rtotaal
 
 De formule voor twee parallel geplaatste weerstanden kan ook worden omgeschreven tot de volgende alternatieve formule:
 
-Voorbeeld
-R1 = 10 Ohm
-R2 = 15 Ohm
+Voorbeeld:
+
+ - R1 = 10 Ohm
+ - R2 = 15 Ohm
 
 In serie is de totale weerstand 10 + 15 = 25 Ohm
-Parallel geplaatst is de totale weerstand 1 / 10 + 1 / 15 = 6 Ohm
+
+Parallel geplaatst is de totale weerstand (1 / 10) + (1 / 15) = 6 Ohm
 
 De totale weerstand van in serie geplaatste weerstanden wordt dus groter dan de individuele weerstandswaardes terwijl bij parallel geplaatste weerstanden de totale weerstand lager is dan de individuele weerstanden.
 
