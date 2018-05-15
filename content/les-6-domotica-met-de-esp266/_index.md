@@ -27,19 +27,6 @@ De ESP is een chip ontwikkeld door Espressif en erg populair voor IoT projecten.
 
 Je kunt deze NodeMCU programmeren vanuit de vertrouwde Arduino IDE maar hiervoor zul je een aantal hulptools moeten installeren.  Om de tools voor de nodeMCU binnen de Arduino IDE beschikbaar te krijgen moeten we deze hardware toevoegen via de ‘boards manager’. 
 
-### Specificaties
-- Memory : 4 Mb
-- Processor : ATmega16U2 op 3.3V
-- IO : D0 ~ D8, SD1 ~ SD3: used as GPIO, PWM, IIC, (15mA) / AD0: 1 channel ADC
-- Wireless : 802.11 b / g / n standard
-- Built-in TCP / IP protocol stack to support multiple TCP Client connections (5 MAX)
-- Power input: 4.5V ~ 9V (10VMAX), USB powered
-- Current: continuous transmission: ≈70mA (200mA MAX), Standby: <200uA
-- Transfer rate: 110-460800bps
-- Support UART / GPIO data communication interface
-- Remote firmware upgrade (OTA)
-- Support Smart Link Smart Networking
-
 ### Installeren benodigde software
 Open binnen de Arduino IDE het menu `Bestand` (`Files`) > `Voorkeuren` (`Preferences`) en vul bij  “Additional Board Manager URLs” de URL “http://arduino.esp8266.com/stable/package_esp8266com_index.json” in. Als je hier al een board hebt ingevuld staan kun je een volgende board toevoegen met een komma en dan de board.
 
