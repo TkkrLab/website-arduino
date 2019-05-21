@@ -123,7 +123,7 @@ void loop() {
   digitalWrite(2, LOW);
   digitalWrite(3, HIGH);
   delay(1000);
-  digitalWrite(4, LOW);
+  digitalWrite(3, LOW);
   ...
 }
 ```
