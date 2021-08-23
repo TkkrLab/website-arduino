@@ -16,11 +16,7 @@ Voordeel van open source is dat de beschikbare hard- en software geheel naar eig
 Tevens is er een grote en levendige Arduino community die vele projecten als open source publiceren. Indien je een specifiek Arduino project wil maken en je google op “Arduino” en wat je wil maken is de kans groot dat er al iemand is die iets soortgelijks heeft gemaakt. Je kunt dan zijn project overnemen en aanpassen naar je eigen wensen.
 
 # Tkkrlab
-TkkrLab (Tukkerlab) is een hobbyplek voor techneuten. Voor de een is dit software maken of met electronica bezig zijn of een 3D printer bouwen. Voordeel om dit in een groep fysiek bij elkaar te doen is dat er altijd wel iemand aanwezig is die je verder kan helpen en het natuurlijk ook een stuk gezelliger is dan dit alleen op een zolderkamertje te doen.
-
-Onze space heeft ook een eigen werkplaats waar je kan solderen en projecten in elkaar kan bouwen. Tevens verzorgen wij ook workshops over onderwerpen zoals de Arduino, open source software, privacy, security, elektronica etc.
-
-TkkrLab is iedere dinsdagavond open voor iedereen, je bent dan altijd van harte welkom om een kijkje bij ons te nemen.
+TkkrLab is een hackerspace in Enschede. Als me meer over ons wil weten check dan onze [site](https://tkkrlab.nl).
 
 In nederland zijn er meer hackerspaces zoals TkkrLab, zie op http://hackerspaces.nl voor een overzicht van de spaces en hun activiteiten.
 
