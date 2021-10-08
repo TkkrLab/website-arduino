@@ -67,10 +67,6 @@ De laatste blauwe draad heb je nodig om de onderbreking van het breadboard in he
 
 Je schakeling is nu klaar.
 
-Om de schakeling te testen heeft een van onze vrijwilligers al een programma in de arduino geladen.
-
-Dit programma laat elke ledje van links naar rechts 1 seconde oplichten.
-
 Vraag een vrijwilliger van Tkkrlab om je schakeling te controleren voordat je de Arduino aansluit op de voedingsspanning.
 
 # De software
