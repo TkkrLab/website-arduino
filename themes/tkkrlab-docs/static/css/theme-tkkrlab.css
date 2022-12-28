@@ -3,7 +3,7 @@
     
     --MAIN-TEXT-color:#000000; /* Color of text by default */
     --MAIN-TITLES-TEXT-color: #5e5e5e; /* Color of titles h2-h3-h4-h5 */
-    --MAIN-LINK-color:#000000; /* Color of links */
+    --MAIN-LINK-color:#777777; /* Color of links */
     --MAIN-LINK-HOVER-color:#000000; /* Color of hovered links */
     --MAIN-ANCHOR-color: #000000; /* color of anchors on titles */
 
@@ -39,8 +39,12 @@ h2, h3, h4, h5 {
     color: var(--MAIN-TITLES-TEXT-color) !important;
 }
 
-a {
+a  {
     color: var(--MAIN-LINK-color);
+}
+
+.highlight {
+    text-decoration: underline;
 }
 
 .anchor {
@@ -113,3 +117,6 @@ a:hover {
     border-color: var(--MENU-SECTION-HR-color);
 }
 
+#prefooter {
+    margin-top: -3em;
+}
