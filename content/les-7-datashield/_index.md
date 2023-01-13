@@ -4,13 +4,18 @@ date: 2022-12-28
 weight: 7
 ---
 
-## Deze documentatie is nog 'Work in progres', zie je fouten laat mij (Dave) dit weten.
+#### Deze documentatie is nog 'Work in progres', zie je fouten laat mij (Dave) dit weten.
 
 ![Arduino Data Logger Shield](/images/arduino-data-logger.jpg)
 
-In deze workshop gaan we de temperatuur met datumtijd loggen naar een SD kaart.
+In deze workshop gaan we de temperatuur met datumtijd loggen naar een SD kaart. Presentatie van deze workshop kun je [hier vinden](https://docs.google.com/presentation/d/1XHDRSEYP50TZxLUKir2bVfbAtpUMhwvs52Qhers0uQ8/edit?usp=sharing).
 
 Op de data logger shield zit een aantal componenten die het makkelijk maken om een data logger van je Arduino te maken. Deze zouden dan weggeschreven kunnen worden op de SD kaart. Met behulp van de realtime klok (met batterij) kun je ook de datum/tijd bijhouden.
+
+#### Arduino shields
+Met de (data)shield kun je de functionaliteit van de Arduino op een eenvoudige manier uitbreiden. Let hierbij wel op welke pinnen door de shield gebruikt word en wat dan nog vrij is voor je eigen toepassingen. Voor de datalog shield worden pinnen A4,A5 (voor RTC klok) en 10 - 13 (voor SD card reader) gebruikt.
+
+Mits pinnen niet voor verschillende doeleinden gebruikt word zou je zelfs meerdere shields op elkaar kunnen stapelen.
 
 ### Benodigde onderdelen voor deze workshop
 
@@ -19,26 +24,26 @@ Op de data logger shield zit een aantal componenten die het makkelijk maken om e
 * Data logger shield met DS1307 RTC klok en SD Card reader.
 * SD card (FAT16 of FAT32 geformarteerd).
 * CR1220 batterij voor realtime klok
-* LM35 temperatuur sensor
+* MCP9701E temperatuur sensor
 
 
-## LM35 Temperatuur sensor
+## MCP9701E Temperatuur sensor
 Grote voordeel van deze sensor dat deze annoloog temperatuur terug geeft. Dit maakt het eenvoudig in gebruik en de benodigde software eenvoudig.
 
 ### Hardware
 
-![LM35 temperatuur sensor](/images/lm-35.jpg)
+![MCP9701E temperatuur sensor](/images/lm-35.jpg)
 
 * Pin1/ Vcc pin / Input pin, tussen 4V-30V
 * Pin2/ Out/ Analog pin - gemeten waarde proportioneel aan temperatuur.
 * Pin3/ GND or ground pin.
 
-Datasheet LM35 sensor
+[Datasheet MCP9701E sensor](MCP970X.pdf)
 
-## LM35 Arduino
+## MCP9701E Arduino
 Je sluit de sensor als volgt aan op de Arduino. Gebruik hiervoor de meegeleverder breadboard met kabeltjes.
 
-![LM35 Arduino](/images/lm35_arduino.png)
+![MCP9701E Arduino](/images/lm35_arduino.png)
 
 ### Code
 
@@ -66,13 +71,12 @@ void loop() {
 ## DS1307 RTC Klok
 Voor de realtime klok (RTC) word de DS1307 gebruikt, een populaire chip voor deze toepassingen. Met behulp van een batterij word ook de tijd bijgehouden als er geen stroom op staat. 
 
-
-Datasheet DS1307
+[Datasheet DS1307](DS1307.pdf)
 
 ### Hardware
 In deze workshop gebruiken we de RTC klok die op de data logger shield zit. Hiermee word de klok aangesloten.
 
-Intern gebruikt de datashield pinnen A4 voor SLA en A5 voor SCL. Deze pinnen kunnen dus niet meer voor andere functies gebruikt worden.
+Intern gebruikt de datashield pinnen A4 (SLA) en A5 (SCL). Deze pinnen kunnen dus niet meer voor andere functies gebruikt worden. Wel zou je andere devices/chips op kunnen aansluiten die ook de [I2C communicatie](https://docs.arduino.cc/learn/communication/wire) ondersteunen.
 
 ### Code
 Voor het programma hebben we ook een extra library nodig. We gebruiken hier de 'RTCLib by Adafruit', zoek deze in de Library manager en installeer deze.
@@ -131,12 +135,12 @@ void loop () {
 ## SD Card logger
 
 ### Hardware
-Voor de SD card reader zijn 4 pinnen nodig voor de communicatie , voor onze datashield word hiervoor pin 10 en volgende 3 pinnen gebruikt. 
+Voor de SD card reader zijn 4 pinnen nodig voor de communicatie , voor onze datashield word hiervoor pin 10 t/m 13 gebruikt.
 
-* CS to pin 10 
-* DI to pin 11 
-* DO to pin 12
-* CLK to pin 13
+* pin 10 (CS) 
+* pin 11 (DI) 
+* pin 12 (DO)
+* pin 13 (CLK)
 
 Je hebt natuurlijk ook pinnen nodig voor de 5V en GND
 
