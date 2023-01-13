@@ -4,66 +4,140 @@ date: 2022-12-28
 weight: 7
 ---
 
-#### Deze documentatie is nog 'Work in progres', zie je fouten laat mij (Dave) dit weten.
-
 ![Arduino Data Logger Shield](/images/arduino-data-logger.jpg)
 
-In deze workshop gaan we de temperatuur met datumtijd loggen naar een SD kaart. Presentatie van deze workshop kun je [hier vinden](https://docs.google.com/presentation/d/1XHDRSEYP50TZxLUKir2bVfbAtpUMhwvs52Qhers0uQ8/edit?usp=sharing).
+In deze workshop gaan we de temperatuur samen met datum en tijd loggen naar een SD kaart. Presentatie van deze workshop kun je [hier vinden](https://docs.google.com/presentation/d/1XHDRSEYP50TZxLUKir2bVfbAtpUMhwvs52Qhers0uQ8/edit?usp=sharing).
 
-Op de data logger shield zit een aantal componenten die het makkelijk maken om een data logger van je Arduino te maken. Deze zouden dan weggeschreven kunnen worden op de SD kaart. Met behulp van de realtime klok (met batterij) kun je ook de datum/tijd bijhouden.
-
-#### Arduino shields
-Met de (data)shield kun je de functionaliteit van de Arduino op een eenvoudige manier uitbreiden. Let hierbij wel op welke pinnen door de shield gebruikt word en wat dan nog vrij is voor je eigen toepassingen. Voor de datalog shield worden pinnen A4,A5 (voor RTC klok) en 10 - 13 (voor SD card reader) gebruikt.
-
-Mits pinnen niet voor verschillende doeleinden gebruikt word zou je zelfs meerdere shields op elkaar kunnen stapelen.
+Het data logger shield heeft twee functies dit het makkelijk maken om een data logger van je Arduino te maken. De eerste functie is een SD kaart lezer, waarmee de Arduino de mogelijkheid krijgt zeer veel data op te slaan. De tweede functie is een real-time klok, een chip die met behulp van een kleine batterij de datum & tijd kan onthouden. Daardoor heeft de Arduino altijd de beschikking over de juiste datum & tijd, ook al is de stroom uitgeschakeld geweest.
 
 ### Benodigde onderdelen voor deze workshop
 
 * Arduino Uno met USB kabel voor programmeren.
 * breadboard met 3 kabeltjes
-* Data logger shield met DS1307 RTC klok en SD Card reader.
-* SD card (FAT16 of FAT32 geformarteerd).
-* CR1220 batterij voor realtime klok
+* Data logger shield met DS1307 real-time klok en SD kaartlezer
+* SD kaart
+* CR1220 batterij voor de real-time klok
 * MCP9701E temperatuur sensor
 
+#### Arduino Uno
 
-## MCP9701E Temperatuur sensor
-Grote voordeel van deze sensor dat deze annoloog temperatuur terug geeft. Dit maakt het eenvoudig in gebruik en de benodigde software eenvoudig.
+Als onderdeel van je workshop kit heb je een Arduino Uno ontvangen. Een Arduino Uno is een bordje gebaseerd op de Atmel ATMEGA328P microcontroller. Een microcontroller is een simpele computer waarbij het geheugen en de processor in een enkele chip samengevoegd zijn. De microcontoller op de Arduino Uno heeft 32KB programmageheugen, 1KB datageheugen en een processor met een snelheid van 16MHz.
 
-### Hardware
+De Arduino Uno heeft 13 digitale (aan & uit) aansluitingen die zowel als in- en uitgang kunnen worden ingesteld. Daarnaast heeft de Arduino Uno 6 analoge aansluitingen die naast analoog ook als digitale aansluiting kunnen worden gebruikt. Een deel hiervan wordt gebruikt voor functies op het data logger shield (pinnen 10 t/m 13 voor de SD kaart lezer en A4 en A5 voor de real-time klok) en voor communicatie met de computer (pinnen 0 en 1).
+
+![Uno pinout met data logger shield](uno-pinout-datashield.svg)
+
+#### Breadboard
+
+In deze les ga je een schakeling opbouwen op een breadboard. Een breadboard bevat gaatjes die in een patroon met elkaar verbonden zijn, waardoor je elektrische verbindingen kunt maken tussen de verschillende componenten die je er in plaatst.
+
+De gaatjes van een breadboard zijn op de volgende manier met elkaar verbonden:
+
+![breadboard](../les-1-looplicht/images/breadboard2.png)
+
+De zwarte lijntjes worden meestal gebruikt om componenten aan te sluiten, terwijl de rode en blauwe lijn meestal als voedingsrails gebruikt worden.
+
+#### Data logger shield
+
+Met de (data)shield kun je de functionaliteit van de Arduino op een eenvoudige manier uitbreiden. Let hierbij wel op welke pinnen door de shield gebruikt word en wat dan nog vrij is voor je eigen toepassingen. Voor de datalog shield worden pinnen A4,A5 (voor RTC klok) en 10 - 13 (voor SD card reader) gebruikt.
+
+Mits er geen conflicten zijn in de gebruikte pinnen zou je zelfs meerdere shields op elkaar kunnen stapelen.
+
+#### MCP9701E Temperatuur sensor
+
+Deze temperatuursensor sluit je aan op de (5 volt) voedingsrail van je Arduino. De sensor geeft vervolgens een analoge spanning van 0 tot 5 volt die lineair in verhouding staat tot de temperatuur. Dit maakt het mogelijk om de temperatuur te meten met een analoge ingang en een simpele berekening.
 
 ![MCP9701E temperatuur sensor](/images/lm-35.jpg)
 
-* Pin1/ Vcc pin / Input pin, tussen 4V-30V
-* Pin2/ Out/ Analog pin - gemeten waarde proportioneel aan temperatuur.
-* Pin3/ GND or ground pin.
+* Pin 1: Voeding (5v)
+* Pin 2: Analoge uitgang (0-5v afhankelijk van de temperatuur)
+* Pin 3: Ground (voedings referentie)
 
 [Datasheet MCP9701E sensor](MCP970X.pdf)
 
-## MCP9701E Arduino
+## Aansluiten van de MCP9701E op een Arduino Uno
+
 Je sluit de sensor als volgt aan op de Arduino. Gebruik hiervoor de meegeleverder breadboard met kabeltjes.
 
 ![MCP9701E Arduino](/images/lm35_arduino.png)
 
-### Code
+### Het computerprogramma
 
-We gaan eerst de temperatuur sensor de waarde naar seriele console loggen :
+Nu de temperatuursensor is aangesloten op de Arduino is het tijd voor het programmeren van de microcontroller op de Arduino Uno. Het programma bepaald het gedrag van de microcontroller, het doel van deze eerste stap is het uitlezen van de temperatuursensor en het naar de computer sturen van de gelezen temperatuur.
+
+#### Functies
+
+Een Arduino programma bestaat altijd uit in ieder geval twee functies: `setup` en `loop`. De `setup` functie wordt één keer uitgevoerd meteen nadat de microcontroller opstart. De `loop` functie wordt vervolgens in een oneindige lus herhaald.
 
 ```cpp
 void setup() {
-  pinMode(A1, INPUT);
-  Serial.begin(115200);
+
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+
+}
+```
+
+In de programmeertaal C wordt een functie gedefinieerd door het type van de waarde die de functie teruggeeft na het uitvoeren te definieren, gevolgd door de naam van de functie en binnen haakjes een lijst van parameters die worden meegegeven aan de functie. In ons geval geeft de functie geen waarde terug, daarom wordt het type van het resultaat als `void` gedefinieerd. De namen van de functies `setup` en `loop` volgen, waarna er een lege parameterlijst `()` wordt gespecificeerd. De setup en de loop functie hebben geen parameters en geven ook geen resultaat terug. De accolades `{}` geven aan welke code binnen de functie valt. Dit wordt ook wel een namespace genoemd.
+
+#### Verbinding maken met de computer
+
+De microcontroller is via een USB naar serieel conversiechip aangesloten op de computer. Op de computer krijgt de Arduino Uno een communicatie poort (`COM`) nummer toegewezen, aan de Arduino kant is er slechts één enkele poort. Om te communiceren moet de communicatiesnelheid aan zowel de computerkant als aan de Arduino kant op de zelde snelheid worden ingesteld. In dit voorbeeld gebruiken we een communicatiesnelheid van `9600` baud, dat betekent dat er 9600 bits per seconde verstuurd worden.
+
+Het programma:
+
+```cpp
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  Serial.println("Hello world");
+}
+```
+
+In de setup functie die één keer wordt uitgevoerd stellen we de seriele poort in door de functie `Serial.begin` aan te roepen. Deze functie heeft één parameter: de communicatiesnelheid. Die wordt op `9600` baud ingesteld. De regel wordt vervolgens afgesloten met een `;`.
+
+In de loop functie, die herhaald wordt uitgevoerd sturen we de tekst `Hello world` naar de computer toe. Dit wordt gedaan met de `Serial.println` functie. Deze functie stuurt de data, gevolgd door een regeleinde naar de seriele poort toe.
+
+#### Uitlezen van de temperatuursensor
+
+MCP9701E:
+
+```cpp
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  int analogCounts = analogRead(A0);
+  float analogVoltage = (analogCounts * 5.0) / 1024.0;
+
+  const float voltageAtZeroDegrees = 400 / 1000.0; //V
+  const float temperatureCoefficient = 19.53 / 1000.0; //V
+  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
+
+  Serial.println(analogTemperature);
+
+  delay(500); // ms
+}
+```
+
+LM35:
+```cpp
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
   int analogCounts = analogRead(A1);
   float analogVoltage = (analogCounts * 5.0) / 1024.0;
   float analogTemperature = analogVoltage / 0.01;
 
-  Serial.println("Analog voltage: " + String(analogVoltage) + " volt, temperature: " + String(analogTemperature) + " *c");
+  Serial.println(analogTemperature);
 
-  delay(200);
+  delay(500); // ms
 }
 ```
 
@@ -89,7 +163,7 @@ RTC_DS1307 rtc;
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
 void setup () {
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   if (! rtc.begin()) {
     Serial.println("Couldn't find RTC");
@@ -157,7 +231,7 @@ void setup() {
   pinMode(pinChipSelect, OUTPUT);
   digitalWrite(pinChipSelect, HIGH);
 
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   while (!SD.begin(pinChipSelect)) {
     Serial.println("Failed to init SD card, trying again in 500ms...");
