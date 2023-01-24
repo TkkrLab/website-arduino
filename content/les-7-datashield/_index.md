@@ -240,7 +240,7 @@ void setup() {
   Serial.begin(9600);
   bool communicatieSuccesvol = rtc.begin();
   
-  if (communicatieSuccesvol == false) {
+  while (communicatieSuccesvol == false) {
     Serial.println("Communicatie met de real-time klok is mislukt!");
     delay(500);
     communicatieSuccesvol = rtc.begin(); // Probeer opnieuw de communicatie met de klok op te starten
@@ -277,7 +277,7 @@ void setup() {
   Serial.begin(9600);
   bool communicatieSuccesvol = rtc.begin();
   
-  if (communicatieSuccesvol == false) {
+  while (communicatieSuccesvol == false) {
     Serial.println("Communicatie met de real-time klok is mislukt!");
     delay(500);
     communicatieSuccesvol = rtc.begin(); // Probeer opnieuw de communicatie met de klok op te starten
