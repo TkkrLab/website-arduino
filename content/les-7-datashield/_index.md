@@ -1,14 +1,14 @@
 ---
 title: "Les 7: Arduino datashield"
-date: 2022-12-28
+date: 2023-01-19
 weight: 7
 ---
 
 ![Arduino Data Logger Shield](/images/arduino-data-logger.jpg)
 
-In deze workshop gaan we de temperatuur samen met datum en tijd loggen naar een SD kaart. Presentatie van deze workshop kun je [hier vinden](https://docs.google.com/presentation/d/1XHDRSEYP50TZxLUKir2bVfbAtpUMhwvs52Qhers0uQ8/edit?usp=sharing).
+In deze workshop gaan we de temperatuur samen met datum en tijd loggen naar een SD kaart. De presentatie van deze workshop kun je [hier vinden](https://docs.google.com/presentation/d/1XHDRSEYP50TZxLUKir2bVfbAtpUMhwvs52Qhers0uQ8/edit?usp=sharing).
 
-Het data logger shield heeft twee functies dit het makkelijk maken om een data logger van je Arduino te maken. De eerste functie is een SD kaart lezer, waarmee de Arduino de mogelijkheid krijgt zeer veel data op te slaan. De tweede functie is een real-time klok, een chip die met behulp van een kleine batterij de datum & tijd kan onthouden. Daardoor heeft de Arduino altijd de beschikking over de juiste datum & tijd, ook al is de stroom uitgeschakeld geweest.
+Het data logger shield heeft twee functies dit het makkelijk maken om een data logger van je Arduino te maken. De eerste functie is een SD kaart lezer, waarmee de Arduino de mogelijkheid krijgt zeer veel data op te slaan. De tweede functie is een real-time klok, een chip die met behulp van een kleine batterij de datum & tijd kan onthouden. Daardoor heeft de Arduino altijd de beschikking over de juiste datum & tijd, ook al is de stroom uitgeschakeld geweest. Als temperatuursensor gebruiken we een MCP9701E, dat is een chip die een analoge spanning afgeeft die lineair gerelateerd is aan de gemeten temperatuur.
 
 ### Benodigde onderdelen voor deze workshop
 
@@ -47,7 +47,7 @@ Mits er geen conflicten zijn in de gebruikte pinnen zou je zelfs meerdere shield
 
 Deze temperatuursensor sluit je aan op de (5 volt) voedingsrail van je Arduino. De sensor geeft vervolgens een analoge spanning van 0 tot 5 volt die lineair in verhouding staat tot de temperatuur. Dit maakt het mogelijk om de temperatuur te meten met een analoge ingang en een simpele berekening.
 
-![MCP9701E temperatuur sensor](/images/lm-35.jpg)
+![MCP9701E temperatuur sensor](mcp9701e.jpg)
 
 * Pin 1: Voeding (5v)
 * Pin 2: Analoge uitgang (0-5v afhankelijk van de temperatuur)
@@ -55,11 +55,9 @@ Deze temperatuursensor sluit je aan op de (5 volt) voedingsrail van je Arduino. 
 
 [Datasheet MCP9701E sensor](MCP970X.pdf)
 
-## Aansluiten van de MCP9701E op een Arduino Uno
+De sensor wordt als volgt aangesloten op de Arduino. Voor het aansluiten kan je de meegeleverde breadboardkabeltjes en het breadboard gebruiken.
 
-Je sluit de sensor als volgt aan op de Arduino. Gebruik hiervoor de meegeleverder breadboard met kabeltjes.
-
-![MCP9701E Arduino](/images/lm35_arduino.png)
+![MCP9701E Arduino](mcp9701e_arduino.png)
 
 ### Het computerprogramma
 
@@ -85,7 +83,11 @@ In de programmeertaal C wordt een functie gedefinieerd door het type van de waar
 
 De microcontroller is via een USB naar serieel conversiechip aangesloten op de computer. Op de computer krijgt de Arduino Uno een communicatie poort (`COM`) nummer toegewezen, aan de Arduino kant is er slechts één enkele poort. Om te communiceren moet de communicatiesnelheid aan zowel de computerkant als aan de Arduino kant op de zelde snelheid worden ingesteld. In dit voorbeeld gebruiken we een communicatiesnelheid van `9600` baud, dat betekent dat er 9600 bits per seconde verstuurd worden.
 
-Het programma:
+In de setup functie die één keer wordt uitgevoerd stellen we de seriele poort in door de functie `Serial.begin` aan te roepen. Deze functie heeft één parameter: de communicatiesnelheid. Die wordt op `9600` baud ingesteld. De regel wordt vervolgens afgesloten met een `;`.
+
+Na het uitvoeren van de `begin` functie kunnen we gebruik maken van de seriele poort door het `print` commando te sturen. De `println` functie is een variant van de print functie die naast de in de parameter meegegeven tekst ook de regeleinde karakters (carriage-return gevolgd door newline) meestuurt. Deze `Serial.println` functieaanroep voegen we in in de loop functie. De loop functie wordt continu herhaald, waardoor de tekst `Hello world` steeds weer opnieuw naar de computer wordt gestuurd.
+
+Het programma ziet er nu als volgt uit:
 
 ```cpp
 void setup() {
@@ -97,13 +99,33 @@ void loop() {
 }
 ```
 
-In de setup functie die één keer wordt uitgevoerd stellen we de seriele poort in door de functie `Serial.begin` aan te roepen. Deze functie heeft één parameter: de communicatiesnelheid. Die wordt op `9600` baud ingesteld. De regel wordt vervolgens afgesloten met een `;`.
-
-In de loop functie, die herhaald wordt uitgevoerd sturen we de tekst `Hello world` naar de computer toe. Dit wordt gedaan met de `Serial.println` functie. Deze functie stuurt de data, gevolgd door een regeleinde naar de seriele poort toe.
-
 #### Uitlezen van de temperatuursensor
 
-MCP9701E:
+De MCP9701E temperatuursensor stuurt een spanning van 0 tot 5 volt uit, afhankelijk van de gemeten temperatuur. In deze stap gaan we twee dingen doen: eerst meten we de spanning die door de sensor wordt uitgestuurd, daarna rekenen we de gemeten spanning om naar de temperatuur.
+
+Het lezen van een analoge ingang op de Arduino Uno wordt gedaan met de functie `analogRead`. Deze functie heeft één parameter, namelijk het nummer van de pin die je wilt lezen. Als je de temperatuursensor hebt aangesloten zoals eerder op deze pagina omschreven werd dan is de uitgang van de temperatuursensor aangesloten op pin `A0` van de Arduino. Het lezen van de analoge ingang wordt dus gedaan door `analogRead(A0);` uit te voeren.
+
+De analoog naar digitaal omzetter in de microcontroller op de Arduino Uno heeft een resolutie van 10-bits. De analoge spanning die wordt gemeten wordt digitaal gerepresenteerd met 2<sup>10</sup> = 1024 stappen. De `analogRead` functie geeft een getal van 0-1023 terug. Dit getal kunnen we opslaan in een variabele van het type integer, in C aangeduid als `int`. De volledige functieaanroep wordt dan `int analogCounts = analogRead(A0);`.
+
+De gemeten waarde kunnen we naar de computer sturen met de `Serial.println` functie. 
+
+Na het meten en sturen kunnen we de processor in de Arduino Uno even laten wachten zodat de gemeten waarden niet zo snel over het scherm bewegen. Dit kunnen we doen door de `delay` functie te gebruiken. De `delay` functie heeft één parameter, namelijk het aantal milliseconden dat de processor moet wachten. Als je de processor een halve seconde wilt laten wachten wordt de functieaanroep dus `delay(500);`.
+
+Het programma ziet er nu als volgt uit:
+
+```cpp
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  int analogCounts = analogRead(A0);
+  Serial.println(analogCounts);
+  delay(500);
+}
+```
+
+De gemeten waarde kan met een simpele berekening worden omgerekend naar de spanning. Voor het opslaan van de gemeten spanning gebruiken we een variabele type dat geschikt is voor het opslaan van getallen met decimalen: floating point. Dit variabele type wordt in C aangeduid met het type `float`. Het omrekenen van de 0-1023 waarde naar een spanning van 0-5v kan als volgt worden gedaan:
 
 ```cpp
 void setup() {
@@ -113,47 +135,173 @@ void setup() {
 void loop() {
   int analogCounts = analogRead(A0);
   float analogVoltage = (analogCounts * 5.0) / 1024.0;
-
-  const float voltageAtZeroDegrees = 400 / 1000.0; //V
-  const float temperatureCoefficient = 19.53 / 1000.0; //V
-  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
-
-  Serial.println(analogTemperature);
-
-  delay(500); // ms
+  Serial.println(analogVoltage);
+  delay(500);
 }
+
 ```
 
-LM35:
+Op de computer kan je na het naar de Arduino sturen van het programma de gemeten spanning zien in de `serial monitor` functie van de Arduino software.
+
+
+De spanning die door de MCP9701E wordt uitgestuurd is lineair gerelateerd aan de gemeten temperatuur. 
+
+In de [datasheet](MCP970X.pdf) van de sensor staan twee interessante waarden: de spanning die wordt uitgestuurd bij een gemeten temperatuur van 0 graden (de offset) en het spanningsverschil per graad Celsius.
+
+![table](mcp970x_table.png)
+
+In deze tabel is te zien dat de uitgestuurde spanning bij 0 graden 400 millivolt is. Per graad temperatuurverschil stuurt de sensor 19,5 millivolt meer (of minder, wanneer de gemeten temperatuur negatief is) uit.
+
+In het programma kunnen we deze waarden definieren als constanten. De getallen kunnen ook als variabele worden gedefinieerd maar door de compiler te vertellen dat het constanten zijn wordt een klein beetje RAM geheugen bespaard, iets dat nog best belangrijk kan zijn op een computerchip met slechts 2 kilobyte RAM.
+
+Het definieren van constanten gebeurt in C door het woord `const` voor een variabele type te plaatsen. In dit geval slaan we de waarden op als floating point getal met het type `float`. De constante wordt dan gedefinieerd als `const float`.
+
+
+Het uitrekenen van de gemeten temperatuur volgt nu door de spanning bij 0 graden van de gemeten spanning af te trekken, waarna de overgebleven spanningswaarde gedeeld wordt door het aantal volt per graad Celsius.
+
+Het programma ziet er nu als volgt uit:
+
 ```cpp
 void setup() {
   Serial.begin(9600);
 }
 
 void loop() {
-  int analogCounts = analogRead(A1);
+  int analogCounts = analogRead(A0);
   float analogVoltage = (analogCounts * 5.0) / 1024.0;
-  float analogTemperature = analogVoltage / 0.01;
-
+  const float voltageAtZeroDegrees = 400 / 1000.0;
+  const float temperatureCoefficient = 19.53 / 1000.0;
+  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
   Serial.println(analogTemperature);
-
-  delay(500); // ms
+  delay(500);
 }
 ```
 
+Op de computer kan je na het naar de Arduino sturen van het programma de gemeten temperatuur zien in de `serial monitor` functie van de Arduino software.
 
-## DS1307 RTC Klok
-Voor de realtime klok (RTC) word de DS1307 gebruikt, een populaire chip voor deze toepassingen. Met behulp van een batterij word ook de tijd bijgehouden als er geen stroom op staat. 
+## DS1307 Real-time clock
 
-[Datasheet DS1307](DS1307.pdf)
+Nu de temperatuur gemeten kan worden is het tijd om de Arduino te voorzien van een klok, zodat de gemeten temperatuur aan de juiste datum en tijd kan worden gekoppeld. Voor deze functie wordt de DS1307 real-time clock gebruikt die op het datalogger shield geplaatst is.
 
-### Hardware
-In deze workshop gebruiken we de RTC klok die op de data logger shield zit. Hiermee word de klok aangesloten.
+Met behulp van een kleine CR1220 lithium batterij word de tijd ook bijgehouden als de Arduino niet op een voeding aangesloten is. 
 
-Intern gebruikt de datashield pinnen A4 (SLA) en A5 (SCL). Deze pinnen kunnen dus niet meer voor andere functies gebruikt worden. Wel zou je andere devices/chips op kunnen aansluiten die ook de [I2C communicatie](https://docs.arduino.cc/learn/communication/wire) ondersteunen.
+De [datasheet](DS1307.pdf) legt in detail uit hoe er met de chip kan worden gecommuniceerd. De chip is met de Arduino verbonden door middel van een `I2C` bus. Gelukkig hoeven we ons niet druk te maken over de exacte werking van de communicatiebus en het protocol maar kunnen we gebruik maken van een library. Een library is een verzameling functies die je heel gemakkelijk kunt invoegen in je Arduino programma door middel van een `#include "..."` regel boven aan het programma.
 
-### Code
+De DS1307 chip is met de Arduino verbonden via A4 (SDA, serial data) en A5 (SCL, serial clock). Deze pinnen kunnen dus niet meer voor andere functies gebruikt worden. Wel zou je andere devices/chips op kunnen aansluiten die ook communiceren via de [I2C](https://docs.arduino.cc/learn/communication/wire) bus.
+
+### De library installeren
 Voor het programma hebben we ook een extra library nodig. We gebruiken hier de 'RTCLib by Adafruit', zoek deze in de Library manager en installeer deze.
+
+### Het programma
+
+Om de library te gebruiken moet deze worden toegevoegd aan het programma. Dit kan worden gedaan door de regel `#include "RTClib.h"` toe te voegen boven in het programma. Om gebruik te maken van de klok worden ook de regels `RTC_DS1307 rtc;` (voor het maken van een object waarmee de staat van de klok wordt gerepresenteerd) en `rtc.begin()` (waarmee de library communicatie met de klok opstart) aan het programma toegevoegd.
+
+```cpp
+#include "RTClib.h"
+
+RTC_DS1307 rtc;
+
+void setup() {
+  Serial.begin(9600);
+  rtc.begin();
+}
+
+void loop() {
+  int analogCounts = analogRead(A0);
+  float analogVoltage = (analogCounts * 5.0) / 1024.0;
+  const float voltageAtZeroDegrees = 400 / 1000.0;
+  const float temperatureCoefficient = 19.53 / 1000.0;
+  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
+  Serial.println(analogTemperature);
+  delay(500);
+}
+```
+
+Om er zeker van te zijn dat het de library gelukt is om met de klok te communiceren kan een controle worden toegevoegd die kijkt naar het resultaat van de `rtc.begin();` functieaanroep. Deze functie geeft een booleaanse waarde terug, dat is waarde die `waar` (1) of `onwaar` (0) kan zijn. De functie geeft `waar` (1) terug wanneer het communiceren met de klok gelukt is en `onwaar` (0) wanneer het communiceren mislukt is.
+
+In C kan een conditioneel uitgevoerd codeblok worden toegevoegd doormiddel van een `if statement`.
+
+Een if statement bestaat uit een conditie gevolgd door een codeblok binnen accolades.
+
+```cpp
+if (conditie) {
+  // Code die alleen wordt uitgevoerd als de conditie waar is
+}
+```
+
+Een conditie is waar wanneer de uitkomst ongelijk is aan `onwaar` (0). Het controleren van het resultaat van de klok initialisatie functie kan als volgt worden geimplementeerd:
+
+```cpp
+#include "RTClib.h"
+
+RTC_DS1307 rtc;
+
+void setup() {
+  Serial.begin(9600);
+  bool communicatieSuccesvol = rtc.begin();
+  
+  if (communicatieSuccesvol == false) {
+    Serial.println("Communicatie met de real-time klok is mislukt!");
+    delay(500);
+    communicatieSuccesvol = rtc.begin(); // Probeer opnieuw de communicatie met de klok op te starten
+  }
+}
+
+void loop() {
+  int analogCounts = analogRead(A0);
+  float analogVoltage = (analogCounts * 5.0) / 1024.0;
+  const float voltageAtZeroDegrees = 400 / 1000.0;
+  const float temperatureCoefficient = 19.53 / 1000.0;
+  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
+  Serial.println(analogTemperature);
+  delay(500);
+}
+```
+
+Nu we kunnen communiceren met de klok chip is de volgende stap het instellen van de datum en tijd. Dit kan met de `rtc.adjust` functie. Deze functie verwacht als parameter een `DateTime` object. Dit object kan worden gemaakt door 6 parameters mee te geven: jaar, maand, dag, uur, minuut en seconde. Samen ziet dat er bijvoorbeeld zo uit:
+
+```
+rtc.adjust(DateTime(2023, 1, 24, 16, 30, 0));
+```
+
+We kunnen de klok ook vragen of er al een datum en tijd bekend is, als de klok de datum en tijd niet weet dan staat de klok stil. Dit kan worden gedaan doormiddel van de functie `rtc.isrunning`. Deze functie geeft een booleaans antwoord van `waar` (1) als de klok loopt en `onwaar` (0) als de klok stil staat.
+
+Als we de datum en tijd alleen willen instellen als de klok nog niet gestart is dan kunnen we dat doen door de `rtc.adjust` functie in een conditioneel codeblok (`if statement`) te plaatsen. Dit ziet er als volgt uit:
+
+```cpp
+#include "RTClib.h"
+
+RTC_DS1307 rtc;
+
+void setup() {
+  Serial.begin(9600);
+  bool communicatieSuccesvol = rtc.begin();
+  
+  if (communicatieSuccesvol == false) {
+    Serial.println("Communicatie met de real-time klok is mislukt!");
+    delay(500);
+    communicatieSuccesvol = rtc.begin(); // Probeer opnieuw de communicatie met de klok op te starten
+  }
+  
+  if (rtc.isrunning() == false) {
+    rtc.adjust(DateTime(2023, 1, 24, 16, 30, 0));
+    Serial.println("Klok gestart!");
+  }
+}
+
+void loop() {
+  int analogCounts = analogRead(A0);
+  float analogVoltage = (analogCounts * 5.0) / 1024.0;
+  const float voltageAtZeroDegrees = 400 / 1000.0;
+  const float temperatureCoefficient = 19.53 / 1000.0;
+  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
+  Serial.println(analogTemperature);
+  delay(500);
+}
+```
+
+---------
+
 
 ```cpp
 #include "RTClib.h"
