@@ -396,7 +396,7 @@ void loop() {
 
 ## SD kaart
 
-De microcontroller op de Arduino Uno heeft maar zeer beperkt geheugen (1 KB), om toch meer data op te kunnen slaan gebruiken we een externe geheugenkaart, een SD kaart.
+De microcontroller op de Arduino Uno heeft maar zeer beperkt geheugen (1 KB), om toch meer data op te kunnen slaan gebruiken we een externe geheugenkaart, een SD kaart. Deze kaart moet wel geformarteerd zijn met FAT16 filessystem. Let er dan ook op dat een bestandsnaam maximaal 8 tekens voor de punt en 3 na de punt (=extensie) mag hebben.
 
 ### Hardware
 Voor communicatie met de SD kaart zijn 4 pinnen nodig, op het datalogger shield is de SD kaart aangelosten op pinnen 10 t/m 13:
