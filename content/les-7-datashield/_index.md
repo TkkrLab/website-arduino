@@ -59,7 +59,7 @@ Deze temperatuursensor sluit je aan op de (5 volt) voedingsrail van je Arduino. 
 
 De sensor wordt als volgt aangesloten op de Arduino. Voor het aansluiten kan je de meegeleverde breadboardkabeltjes en het breadboard gebruiken.
 
-![MCP9701E Arduino](mcp9701e_arduino.png)
+![MCP9701E Arduino](mcp9701e_arduino.jpg)
 
 ### Het computerprogramma
 
@@ -482,7 +482,7 @@ void setup() {
   }
   
   if (rtc.isrunning() == false) {
-    rtc.adjust(DateTime(2023, 1, 24, 16, 30, 0));
+    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     Serial.println("Klok gestart!");
   }
 
