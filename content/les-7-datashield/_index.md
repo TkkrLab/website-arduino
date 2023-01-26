@@ -101,6 +101,18 @@ void loop() {
 }
 ```
 
+##### Kiezen bordtype en poort
+
+Boven in de Arduino software vind je de board en poortinstellingen. Kies hier voor verbinden met een `Arduino Uno` op een van de `COM` poorten in je computer. Op Mac en Linux heeft de poortnaam een andere vorm, namelijk `/dev/...`, de werking is verder gelijk.
+
+![arduino board](arduino_board2.png)
+
+Eventueel kan je ook op select other board en port klikken als het bordje niet zichtbaar is in het dropdown menu.
+
+![arduino board](arduino_board.png)
+
+Als je Windows gebruikt kan het zijn dat je een stuurprogramma moet installeren voordat de Arduino wordt herkent. Instructies voor het installeren van het stuurprogramma voor de CH340 USB naar serieel converter vind je [hier](/les-6-domotica-met-de-esp266/driver/).
+
 #### Uitlezen van de temperatuursensor
 
 De MCP9701E temperatuursensor stuurt een spanning van 0 tot 5 volt uit, afhankelijk van de gemeten temperatuur. In deze stap gaan we twee dingen doen: eerst meten we de spanning die door de sensor wordt uitgestuurd, daarna rekenen we de gemeten spanning om naar de temperatuur.
@@ -193,6 +205,8 @@ De DS1307 chip is met de Arduino verbonden via A4 (SDA, serial data) en A5 (SCL,
 
 ### De library installeren
 Voor het programma hebben we ook een extra library nodig. We gebruiken hier de 'RTCLib by Adafruit', zoek deze in de Library manager en installeer deze.
+
+![arduino library](arduino_library.png)
 
 ### Het programma
 
