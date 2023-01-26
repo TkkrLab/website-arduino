@@ -43,6 +43,8 @@ Met de (data)shield kun je de functionaliteit van de Arduino op een eenvoudige m
 
 Mits er geen conflicten zijn in de gebruikte pinnen zou je zelfs meerdere shields op elkaar kunnen stapelen.
 
+Zie ook [Adafruit data logger shield](https://learn.adafruit.com/adafruit-data-logger-shield)
+
 #### MCP9701E Temperatuur sensor
 
 Deze temperatuursensor sluit je aan op de (5 volt) voedingsrail van je Arduino. De sensor geeft vervolgens een analoge spanning van 0 tot 5 volt die lineair in verhouding staat tot de temperatuur. Dit maakt het mogelijk om de temperatuur te meten met een analoge ingang en een simpele berekening.
@@ -217,7 +219,7 @@ void loop() {
 }
 ```
 
-Om er zeker van te zijn dat het de library gelukt is om met de klok te communiceren kan een controle worden toegevoegd die kijkt naar het resultaat van de `rtc.begin();` functieaanroep. Deze functie geeft een booleaanse waarde terug, dat is waarde die `waar` (1) of `onwaar` (0) kan zijn. De functie geeft `waar` (1) terug wanneer het communiceren met de klok gelukt is en `onwaar` (0) wanneer het communiceren mislukt is.
+Om er zeker van te zijn dat het de library gelukt is om met de klok te communiceren kan een controle worden toegevoegd die kijkt naar het resultaat van de `rtc.begin();` functieaanroep. Deze functie geeft een booleaanse waarde terug, dat is waarde die `waar` (niet 0) of `onwaar` (0) kan zijn. De functie geeft `waar` (niet 0) terug wanneer het communiceren met de klok gelukt is en `onwaar` (0) wanneer het communiceren mislukt is.
 
 In C kan een conditioneel uitgevoerd codeblok worden toegevoegd doormiddel van een `if statement`.
 
@@ -229,7 +231,17 @@ if (conditie) {
 }
 ```
 
-Een conditie is waar wanneer de uitkomst ongelijk is aan `onwaar` (0). Het controleren van het resultaat van de klok initialisatie functie kan als volgt worden geimplementeerd:
+Een conditie is waar wanneer de uitkomst ongelijk is aan `onwaar` (0).
+
+Naast het `if statement` kent C ook een conditioneel uitgevoerde lus, de `while loop`. Een `while loop` voert de code in het codeblok herhaald uit zolang de uitkomst van de conditie `waar` (niet 0) is.
+
+```cpp
+while (conditie) {
+  // Code die herhaald wordt uitgevoerd zolang de conditie waar is
+}
+```
+
+Het controleren van het resultaat van de klok initialisatie functie kan als volgt worden geimplementeerd:
 
 ```cpp
 #include "RTClib.h"
@@ -264,7 +276,7 @@ Nu we kunnen communiceren met de klok chip is de volgende stap het instellen van
 rtc.adjust(DateTime(2023, 1, 24, 16, 30, 0));
 ```
 
-We kunnen de klok ook vragen of er al een datum en tijd bekend is, als de klok de datum en tijd niet weet dan staat de klok stil. Dit kan worden gedaan doormiddel van de functie `rtc.isrunning`. Deze functie geeft een booleaans antwoord van `waar` (1) als de klok loopt en `onwaar` (0) als de klok stil staat.
+We kunnen de klok ook vragen of er al een datum en tijd bekend is, als de klok de datum en tijd niet weet dan staat de klok stil. Dit kan worden gedaan doormiddel van de functie `rtc.isrunning`. Deze functie geeft een booleaans antwoord van `waar` (niet 0) als de klok loopt en `onwaar` (0) als de klok stil staat.
 
 Als we de datum en tijd alleen willen instellen als de klok nog niet gestart is dan kunnen we dat doen door de `rtc.adjust` functie in een conditioneel codeblok (`if statement`) te plaatsen. Dit ziet er als volgt uit:
 
@@ -300,116 +312,234 @@ void loop() {
 }
 ```
 
----------
+Een leuke truuc om automatisch de juiste datum en tijd in te stellen zonder ingewikkelde code voor communicatie om een datum en tijd in te voeren is het gebruiken van precompiler macros om automatisch de datum en tijd waarop het programma gebouwd is in te vullen in de `rtc.adjust` functie.
 
+Dit kan door de parameters binnen het `DateTime` object dat wordt meegegeven als parameter aan de `rtc.adjust` functie te veranderen in:
+
+```cpp
+rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+```
+
+Gebruik maken van de klok gebeurt doormiddel van de `rtc.now` functie. Deze functie heeft geen parameters en geeft een `DateTime` object terug.
+
+```
+DateTime now = rtc.now();
+```
+
+Het DateTime object heeft een aantal functies waarmee de velden van de datum en tijd kunnen worden gelezen.
+
+```cpp
+DateTime now = rtc.now();
+uint16_t year = now.year();
+uint8_t month = now.month();
+uint8_t day = now.day();
+uint8_t hour = now.hour();
+uint8_t minute = now.minute();
+uint8_t second = now.second();
+uint8_t dayOfWeek = now.dayOfTheWeek(); // Dag van de week (0-6) beginnend met zondag
+uint32_t timestamp = now.unixtime(); // Aantal seconden sinds middernacht 01-01-1970
+```
+
+Het volgende programma print de datum en tijd samen met de gemeten temperatuur naar de computer:
 
 ```cpp
 #include "RTClib.h"
 
 RTC_DS1307 rtc;
 
-char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-
-void setup () {
+void setup() {
   Serial.begin(9600);
-
-  if (! rtc.begin()) {
-    Serial.println("Couldn't find RTC");
-    Serial.flush();
-    while (1) delay(10);
+  bool communicatieSuccesvol = rtc.begin();
+  
+  while (communicatieSuccesvol == false) {
+    Serial.println("Communicatie met de real-time klok is mislukt");
+    delay(500);
+    communicatieSuccesvol = rtc.begin(); // Probeer opnieuw de communicatie met de klok op te starten
   }
-
-  if (! rtc.isrunning()) {
-    Serial.println("RTC is NOT running, let's set the time!");
-    // When time needs to be set on a new device, or after a power loss, the
-    // following line sets the RTC to the date & time this sketch was compiled
-    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-    // This line sets the RTC with an explicit date & time, for example to set
-    // January 21, 2014 at 3am you would call:
-    // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
+  
+  if (rtc.isrunning() == false) {
+    rtc.adjust(DateTime(2023, 1, 24, 16, 30, 0));
+    Serial.println("Klok gestart!");
   }
 }
 
-void loop () {
-    DateTime now = rtc.now();
+void loop() {
+  // Lees de temperatuursensor uit
+  int analogCounts = analogRead(A0);
+  float analogVoltage = (analogCounts * 5.0) / 1024.0;
+  const float voltageAtZeroDegrees = 400 / 1000.0;
+  const float temperatureCoefficient = 19.53 / 1000.0;
+  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
 
-    Serial.print(now.year(), DEC);
-    Serial.print('/');
-    Serial.print(now.month(), DEC);
-    Serial.print('/');
-    Serial.print(now.day(), DEC);
-    Serial.print(" (");
-    Serial.print(daysOfTheWeek[now.dayOfTheWeek()]);
-    Serial.print(") ");
-    Serial.print(now.hour(), DEC);
-    Serial.print(':');
-    Serial.print(now.minute(), DEC);
-    Serial.print(':');
-    Serial.print(now.second(), DEC);
-    Serial.print("  unix timestamp ");
-    Serial.print(" (seconds since midnight 1/1/1970) ");
-    Serial.print(now.unixtime());
-    Serial.println();
-    delay(3000);
+  // Lees de datum en tijd uit
+  DateTime now = rtc.now();
+  
+  // Print het resultaat naar de computer
+  Serial.print(now.day(), DEC);
+  Serial.print("-");
+  Serial.print(now.month(), DEC);
+  Serial.print("-");
+  Serial.print(now.year(), DEC);
+  Serial.print(" ");
+  Serial.print(now.hour(), DEC);
+  Serial.print(":");
+  Serial.print(now.minute(), DEC);
+  Serial.print(":");
+  Serial.print(now.second(), DEC);
+  Serial.print(" ");
+  Serial.println(analogTemperature);
+
+  // Wacht
+  delay(500);
 }
 ```
 
-## SD Card logger
+## SD kaart
+
+De microcontroller op de Arduino Uno heeft maar zeer beperkt geheugen (1 KB), om toch meer data op te kunnen slaan gebruiken we een externe geheugenkaart, een SD kaart.
 
 ### Hardware
-Voor de SD card reader zijn 4 pinnen nodig voor de communicatie , voor onze datashield word hiervoor pin 10 t/m 13 gebruikt.
+Voor communicatie met de SD kaart zijn 4 pinnen nodig, op het datalogger shield is de SD kaart aangelosten op pinnen 10 t/m 13:
 
-* pin 10 (CS) 
-* pin 11 (DI) 
-* pin 12 (DO)
-* pin 13 (CLK)
+* pin 10 (CS, chip select)
+* pin 11 (DI, data in)
+* pin 12 (DO, data uit)
+* pin 13 (CLK, klok)
 
-Je hebt natuurlijk ook pinnen nodig voor de 5V en GND
+### Software
 
-### Code
-Programma om informatie te loggen naar SD card. In dit voorbeeld is dit niet een echte meting maar een test waarde om de werking te testen.
+Om gebruik te kunnen maken van de SD kaart hebben we twee bij de Arduino omgeving meegeleverde libraries nodig: `SPI.h` en `SD.h`.
+
+Je kunt deze libraries toevoegen aan je programma door de volgende regels boven in het programma toe te plakken:
+
+```cpp
+#include <SPI.h>
+#include <SD.h>
+```
+
+De volgende stap is het initialiseren van de communicatie met de SD kaart. Om dat te doen voegen we de volgende initialisatiecode toe aan de `setup` functie:
+
+```cpp
+void setup() {
+...
+  while (SD.begin(10) == false) {
+    Serial.println("Communicatie met SD kaart is mislukt");
+    delay(500);
+  }
+}
+```
+
+De `SD` kaart library maakt gebruik van de hardwarefuncties voor `SPI` die in de microcontroller zijn ingebouwd. Daarom hoeven we pinnen 11 t/m 13 nergens te specificeren, als `SPI` gebruikt wordt wordt dat altijd via deze pinnen gedaan.
+
+`SPI` staat voor "Serial Peripheral Interface" en is een gestandaardiseerde communicatiebus.
+
+In de loop functie kunnen we nu gebruik maken van de SD kaart doormiddel van de functies `SD.open` om een bestand te maken en/of openen en `exampleFile.write` om naar het bestand te schrijven. Het bestand moet ook weer worden gesloten om de geschreven data daadwerkelijk naar de SD kaart te sturen, dit gebeurt met de functie `exampleFile.close`.
+
+Een voorbeeldprogramma dat de SD kaart initialiseert en iedere seconde een waarde naar een voorbeeldbestand schrijft ziet er als volgt uit:
 
 ```cpp
 #include <SPI.h>
 #include <SD.h>
 
-const int pinChipSelect = 10;
-
 void setup() {
-  pinMode(pinChipSelect, OUTPUT);
-  digitalWrite(pinChipSelect, HIGH);
-
   Serial.begin(9600);
-
-  while (!SD.begin(pinChipSelect)) {
-    Serial.println("Failed to init SD card, trying again in 500ms...");
+  while (SD.begin(10) == false) {
+    Serial.println("Communicatie met SD kaart is mislukt");
     delay(500);
   }
-  Serial.println("SD card initialized!");
-}
-
-void log(unsigned long time, float temperature) {
-  String logLine = String(time) + "," + String(temperature);
-  Serial.println(logLine);
-  File dataFile = SD.open("data.txt", FILE_WRITE);
-  if (!dataFile) {
-    Serial.println("Failed to write to the SD card");
-    return;
-  }
-  dataFile.println(logLine);
-  dataFile.close();
 }
 
 void loop() {
-  unsigned long time = millis();
-  float temperature = 13.37;
-  log(time, temperature);
+  File exampleFile = SD.open("example.txt", FILE_WRITE);
+  if (exampleFile) {
+    exampleFile.println("Dit is een test");
+    exampleFile.close();
+    Serial.println("Testdata succesvol geschreven");
+  } else {
+    Serial.println("Bestand kon niet worden geopend");
+  }
   delay(1000);
 }
 ```
 
-Zie ook [Adafruit data logger shield](https://learn.adafruit.com/adafruit-data-logger-shield)
+Als we dit programma samenvoegen met de code voor de temperatuursensor en de klok dan krijgen we het volgende:
 
-## Oefening
+```cpp
+#include "RTClib.h"
+#include "SPI.h"
+#include "SD.h"
 
-Combineer bovenstaande oderdelen tot 1 geheel. Gebruik de waarden van de temperatuur sensor om deze naar de SD kaart te schrijven.
+RTC_DS1307 rtc;
+
+void setup() {
+  Serial.begin(9600);
+  bool communicatieSuccesvol = rtc.begin();
+  
+  while (communicatieSuccesvol == false) {
+    Serial.println("Communicatie met de real-time klok is mislukt");
+    delay(500);
+    communicatieSuccesvol = rtc.begin(); // Probeer opnieuw de communicatie met de klok op te starten
+  }
+  
+  if (rtc.isrunning() == false) {
+    rtc.adjust(DateTime(2023, 1, 24, 16, 30, 0));
+    Serial.println("Klok gestart!");
+  }
+
+  while (SD.begin(10) == false) {
+    Serial.println("Communicatie met SD kaart is mislukt");
+    delay(500);
+  }
+}
+
+void loop() {
+  // Lees de temperatuursensor uit
+  int analogCounts = analogRead(A0);
+  float analogVoltage = (analogCounts * 5.0) / 1024.0;
+  const float voltageAtZeroDegrees = 400 / 1000.0;
+  const float temperatureCoefficient = 19.53 / 1000.0;
+  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
+
+  // Lees de datum en tijd uit
+  DateTime now = rtc.now();
+  
+  // Print het resultaat naar de computer
+  Serial.print(now.day(), DEC);
+  Serial.print("-");
+  Serial.print(now.month(), DEC);
+  Serial.print("-");
+  Serial.print(now.year(), DEC);
+  Serial.print(" ");
+  Serial.print(now.hour(), DEC);
+  Serial.print(":");
+  Serial.print(now.minute(), DEC);
+  Serial.print(":");
+  Serial.print(now.second(), DEC);
+  Serial.print(" ");
+  Serial.println(analogTemperature);
+  
+  // Schrijf het resultaat naar een bestand op de geheugenkaart
+  File dataFile = SD.open("temperatuur.txt", FILE_WRITE);
+  if (dataFile) {
+    dataFile.print(now.day(), DEC);
+    dataFile.print("-");
+    dataFile.print(now.month(), DEC);
+    dataFile.print("-");
+    dataFile.print(now.year(), DEC);
+    dataFile.print(" ");
+    dataFile.print(now.hour(), DEC);
+    dataFile.print(":");
+    dataFile.print(now.minute(), DEC);
+    dataFile.print(":");
+    dataFile.print(now.second(), DEC);
+    dataFile.print(" ");
+    dataFile.println(analogTemperature);
+    dataFile.close();
+  } else {
+    Serial.println("Temperatuur opslaan op SD kaart is mislukt, bestand openen mislukt");
+  }
+
+  // Wacht
+  delay(500);
+}
+```
