@@ -6,196 +6,12 @@ weight: 7
 
 ![Arduino Data Logger Shield](/images/arduino-data-logger.jpg)
 
-In deze workshop gaan we de temperatuur samen met datum en tijd loggen naar een SD kaart. De presentatie van deze workshop kun je [hier vinden](https://docs.google.com/presentation/d/1XHDRSEYP50TZxLUKir2bVfbAtpUMhwvs52Qhers0uQ8/edit?usp=sharing).
-
-Het data logger shield heeft twee functies dit het makkelijk maken om een data logger van je Arduino te maken. De eerste functie is een SD kaart lezer, waarmee de Arduino de mogelijkheid krijgt zeer veel data op te slaan. De tweede functie is een real-time klok, een chip die met behulp van een kleine batterij de datum & tijd kan onthouden. Daardoor heeft de Arduino altijd de beschikking over de juiste datum & tijd, ook al is de stroom uitgeschakeld geweest. Als temperatuursensor gebruiken we een MCP9701E, dat is een chip die een analoge spanning afgeeft die lineair gerelateerd is aan de gemeten temperatuur.
-
-### Benodigde onderdelen voor deze workshop
-
-* Arduino Uno met USB kabel voor programmeren.
-* breadboard met 3 kabeltjes
-* Data logger shield met DS1307 real-time klok en SD kaartlezer
-* SD kaart
-* CR1220 batterij voor de real-time klok
-* MCP9701E temperatuur sensor
-
-#### Arduino Uno
-
-Als onderdeel van je workshop kit heb je een Arduino Uno ontvangen. Een Arduino Uno is een bordje gebaseerd op de Atmel ATMEGA328P microcontroller. Een microcontroller is een simpele computer waarbij het geheugen en de processor in een enkele chip samengevoegd zijn. De microcontoller op de Arduino Uno heeft 32KB programmageheugen, 1KB datageheugen en een processor met een snelheid van 16MHz.
-
-De Arduino Uno heeft 13 digitale (aan & uit) aansluitingen die zowel als in- en uitgang kunnen worden ingesteld. Daarnaast heeft de Arduino Uno 6 analoge aansluitingen die naast analoog ook als digitale aansluiting kunnen worden gebruikt. Een deel hiervan wordt gebruikt voor functies op het data logger shield (pinnen 10 t/m 13 voor de SD kaart lezer en A4 en A5 voor de real-time klok) en voor communicatie met de computer (pinnen 0 en 1).
-
-![Uno pinout met data logger shield](uno-pinout-datashield.svg)
-
-#### Breadboard
-
-In deze les ga je een schakeling opbouwen op een breadboard. Een breadboard bevat gaatjes die in een patroon met elkaar verbonden zijn, waardoor je elektrische verbindingen kunt maken tussen de verschillende componenten die je er in plaatst.
-
-De gaatjes van een breadboard zijn op de volgende manier met elkaar verbonden:
-
-![breadboard](../les-1-looplicht/images/breadboard2.png)
-
-De zwarte lijntjes worden meestal gebruikt om componenten aan te sluiten, terwijl de rode en blauwe lijn meestal als voedingsrails gebruikt worden.
-
-#### Data logger shield
-
-Met de (data)shield kun je de functionaliteit van de Arduino op een eenvoudige manier uitbreiden. Let hierbij wel op welke pinnen door de shield gebruikt word en wat dan nog vrij is voor je eigen toepassingen. Voor de datalog shield worden pinnen A4,A5 (voor RTC klok) en 10 - 13 (voor SD card reader) gebruikt.
-
-Mits er geen conflicten zijn in de gebruikte pinnen zou je zelfs meerdere shields op elkaar kunnen stapelen.
+Het data logger shield heeft twee functies dit het makkelijk maken om een data logger van je Arduino te maken. De eerste functie is een SD kaart lezer, waarmee de Arduino de mogelijkheid krijgt zeer veel data op te slaan. De tweede functie is een real-time klok, een chip die met behulp van een kleine batterij de datum & tijd kan onthouden. Daardoor heeft de Arduino altijd de beschikking over de juiste datum & tijd, ook al is de stroom uitgeschakeld geweest..
 
 Zie ook [Adafruit data logger shield](https://learn.adafruit.com/adafruit-data-logger-shield)
 
-#### MCP9701E Temperatuur sensor
-
-Deze temperatuursensor sluit je aan op de (5 volt) voedingsrail van je Arduino. De sensor geeft vervolgens een analoge spanning van 0 tot 5 volt die lineair in verhouding staat tot de temperatuur. Dit maakt het mogelijk om de temperatuur te meten met een analoge ingang en een simpele berekening.
-
-![MCP9701E temperatuur sensor](mcp9701e.jpg)
-
-* Pin 1: Voeding (5v)
-* Pin 2: Analoge uitgang (0-5v afhankelijk van de temperatuur)
-* Pin 3: Ground (voedings referentie)
-
-[Datasheet MCP9701E sensor](MCP970X.pdf)
-
-De sensor wordt als volgt aangesloten op de Arduino. Voor het aansluiten kan je de meegeleverde breadboardkabeltjes en het breadboard gebruiken.
-
-![MCP9701E Arduino](mcp9701e_arduino.jpg)
-
-### Het computerprogramma
-
-Nu de temperatuursensor is aangesloten op de Arduino is het tijd voor het programmeren van de microcontroller op de Arduino Uno. Het programma bepaald het gedrag van de microcontroller, het doel van deze eerste stap is het uitlezen van de temperatuursensor en het naar de computer sturen van de gelezen temperatuur.
-
-#### Functies
-
-Een Arduino programma bestaat altijd uit in ieder geval twee functies: `setup` en `loop`. De `setup` functie wordt één keer uitgevoerd meteen nadat de microcontroller opstart. De `loop` functie wordt vervolgens in een oneindige lus herhaald.
-
-```cpp
-void setup() {
-
-}
-
-void loop() {
-
-}
-```
-
-In de programmeertaal C wordt een functie gedefinieerd door het type van de waarde die de functie teruggeeft na het uitvoeren te definieren, gevolgd door de naam van de functie en binnen haakjes een lijst van parameters die worden meegegeven aan de functie. In ons geval geeft de functie geen waarde terug, daarom wordt het type van het resultaat als `void` gedefinieerd. De namen van de functies `setup` en `loop` volgen, waarna er een lege parameterlijst `()` wordt gespecificeerd. De setup en de loop functie hebben geen parameters en geven ook geen resultaat terug. De accolades `{}` geven aan welke code binnen de functie valt. Dit wordt ook wel een namespace genoemd.
-
-#### Verbinding maken met de computer
-
-De microcontroller is via een USB naar serieel conversiechip aangesloten op de computer. Op de computer krijgt de Arduino Uno een communicatie poort (`COM`) nummer toegewezen, aan de Arduino kant is er slechts één enkele poort. Om te communiceren moet de communicatiesnelheid aan zowel de computerkant als aan de Arduino kant op de zelde snelheid worden ingesteld. In dit voorbeeld gebruiken we een communicatiesnelheid van `9600` baud, dat betekent dat er 9600 bits per seconde verstuurd worden.
-
-In de setup functie die één keer wordt uitgevoerd stellen we de seriele poort in door de functie `Serial.begin` aan te roepen. Deze functie heeft één parameter: de communicatiesnelheid. Die wordt op `9600` baud ingesteld. De regel wordt vervolgens afgesloten met een `;`.
-
-Na het uitvoeren van de `begin` functie kunnen we gebruik maken van de seriele poort door het `print` commando te sturen. De `println` functie is een variant van de print functie die naast de in de parameter meegegeven tekst ook de regeleinde karakters (carriage-return gevolgd door newline) meestuurt. Deze `Serial.println` functieaanroep voegen we in in de loop functie. De loop functie wordt continu herhaald, waardoor de tekst `Hello world` steeds weer opnieuw naar de computer wordt gestuurd.
-
-Het programma ziet er nu als volgt uit:
-
-```cpp
-void setup() {
-  Serial.begin(9600);
-}
-
-void loop() {
-  Serial.println("Hello world");
-}
-```
-
-##### Kiezen bordtype en poort
-
-Boven in de Arduino software vind je de board en poortinstellingen. Kies hier voor verbinden met een `Arduino Uno` op een van de `COM` poorten in je computer. Op Mac en Linux heeft de poortnaam een andere vorm, namelijk `/dev/...`, de werking is verder gelijk.
-
-![arduino board](arduino_board2.png)
-
-Eventueel kan je ook op select other board en port klikken als het bordje niet zichtbaar is in het dropdown menu.
-
-![arduino board](arduino_board.png)
-
-Als je Windows gebruikt kan het zijn dat je een stuurprogramma moet installeren voordat de Arduino wordt herkent. Instructies voor het installeren van het stuurprogramma voor de CH340 USB naar serieel converter vind je [hier](/les-6-domotica-met-de-esp266/driver/).
-
-#### Uitlezen van de temperatuursensor
-
-De MCP9701E temperatuursensor stuurt een spanning van 0 tot 5 volt uit, afhankelijk van de gemeten temperatuur. In deze stap gaan we twee dingen doen: eerst meten we de spanning die door de sensor wordt uitgestuurd, daarna rekenen we de gemeten spanning om naar de temperatuur.
-
-Het lezen van een analoge ingang op de Arduino Uno wordt gedaan met de functie `analogRead`. Deze functie heeft één parameter, namelijk het nummer van de pin die je wilt lezen. Als je de temperatuursensor hebt aangesloten zoals eerder op deze pagina omschreven werd dan is de uitgang van de temperatuursensor aangesloten op pin `A0` van de Arduino. Het lezen van de analoge ingang wordt dus gedaan door `analogRead(A0);` uit te voeren.
-
-De analoog naar digitaal omzetter in de microcontroller op de Arduino Uno heeft een resolutie van 10-bits. De analoge spanning die wordt gemeten wordt digitaal gerepresenteerd met 2<sup>10</sup> = 1024 stappen. De `analogRead` functie geeft een getal van 0-1023 terug. Dit getal kunnen we opslaan in een variabele van het type integer, in C aangeduid als `int`. De volledige functieaanroep wordt dan `int analogCounts = analogRead(A0);`.
-
-De gemeten waarde kunnen we naar de computer sturen met de `Serial.println` functie. 
-
-Na het meten en sturen kunnen we de processor in de Arduino Uno even laten wachten zodat de gemeten waarden niet zo snel over het scherm bewegen. Dit kunnen we doen door de `delay` functie te gebruiken. De `delay` functie heeft één parameter, namelijk het aantal milliseconden dat de processor moet wachten. Als je de processor een halve seconde wilt laten wachten wordt de functieaanroep dus `delay(500);`.
-
-Het programma ziet er nu als volgt uit:
-
-```cpp
-void setup() {
-  Serial.begin(9600);
-}
-
-void loop() {
-  int analogCounts = analogRead(A0);
-  Serial.println(analogCounts);
-  delay(500);
-}
-```
-
-De gemeten waarde kan met een simpele berekening worden omgerekend naar de spanning. Voor het opslaan van de gemeten spanning gebruiken we een variabele type dat geschikt is voor het opslaan van getallen met decimalen: floating point. Dit variabele type wordt in C aangeduid met het type `float`. Het omrekenen van de 0-1023 waarde naar een spanning van 0-5v kan als volgt worden gedaan:
-
-```cpp
-void setup() {
-  Serial.begin(9600);
-}
-
-void loop() {
-  int analogCounts = analogRead(A0);
-  float analogVoltage = (analogCounts * 5.0) / 1024.0;
-  Serial.println(analogVoltage);
-  delay(500);
-}
-
-```
-
-Op de computer kan je na het naar de Arduino sturen van het programma de gemeten spanning zien in de `serial monitor` functie van de Arduino software.
-
-
-De spanning die door de MCP9701E wordt uitgestuurd is lineair gerelateerd aan de gemeten temperatuur. 
-
-In de [datasheet](MCP970X.pdf) van de sensor staan twee interessante waarden: de spanning die wordt uitgestuurd bij een gemeten temperatuur van 0 graden (de offset) en het spanningsverschil per graad Celsius.
-
-![table](mcp970x_table.png)
-
-In deze tabel is te zien dat de uitgestuurde spanning bij 0 graden 400 millivolt is. Per graad temperatuurverschil stuurt de sensor 19,5 millivolt meer (of minder, wanneer de gemeten temperatuur negatief is) uit.
-
-In het programma kunnen we deze waarden definieren als constanten. De getallen kunnen ook als variabele worden gedefinieerd maar door de compiler te vertellen dat het constanten zijn wordt een klein beetje RAM geheugen bespaard, iets dat nog best belangrijk kan zijn op een computerchip met slechts 2 kilobyte RAM.
-
-Het definieren van constanten gebeurt in C door het woord `const` voor een variabele type te plaatsen. In dit geval slaan we de waarden op als floating point getal met het type `float`. De constante wordt dan gedefinieerd als `const float`.
-
-
-Het uitrekenen van de gemeten temperatuur volgt nu door de spanning bij 0 graden van de gemeten spanning af te trekken, waarna de overgebleven spanningswaarde gedeeld wordt door het aantal volt per graad Celsius.
-
-Het programma ziet er nu als volgt uit:
-
-```cpp
-void setup() {
-  Serial.begin(9600);
-}
-
-void loop() {
-  int analogCounts = analogRead(A0);
-  float analogVoltage = (analogCounts * 5.0) / 1024.0;
-  const float voltageAtZeroDegrees = 400 / 1000.0;
-  const float temperatureCoefficient = 19.53 / 1000.0;
-  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
-  Serial.println(analogTemperature);
-  delay(500);
-}
-```
-
-Op de computer kan je na het naar de Arduino sturen van het programma de gemeten temperatuur zien in de `serial monitor` functie van de Arduino software.
 
 ## DS1307 Real-time clock
-
-Nu de temperatuur gemeten kan worden is het tijd om de Arduino te voorzien van een klok, zodat de gemeten temperatuur aan de juiste datum en tijd kan worden gekoppeld. Voor deze functie wordt de DS1307 real-time clock gebruikt die op het datalogger shield geplaatst is.
 
 Met behulp van een kleine CR1220 lithium batterij word de tijd ook bijgehouden als de Arduino niet op een voeding aangesloten is. 
 
@@ -223,13 +39,7 @@ void setup() {
 }
 
 void loop() {
-  int analogCounts = analogRead(A0);
-  float analogVoltage = (analogCounts * 5.0) / 1024.0;
-  const float voltageAtZeroDegrees = 400 / 1000.0;
-  const float temperatureCoefficient = 19.53 / 1000.0;
-  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
-  Serial.println(analogTemperature);
-  delay(500);
+
 }
 ```
 
@@ -274,13 +84,7 @@ void setup() {
 }
 
 void loop() {
-  int analogCounts = analogRead(A0);
-  float analogVoltage = (analogCounts * 5.0) / 1024.0;
-  const float voltageAtZeroDegrees = 400 / 1000.0;
-  const float temperatureCoefficient = 19.53 / 1000.0;
-  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
-  Serial.println(analogTemperature);
-  delay(500);
+
 }
 ```
 
@@ -316,13 +120,7 @@ void setup() {
 }
 
 void loop() {
-  int analogCounts = analogRead(A0);
-  float analogVoltage = (analogCounts * 5.0) / 1024.0;
-  const float voltageAtZeroDegrees = 400 / 1000.0;
-  const float temperatureCoefficient = 19.53 / 1000.0;
-  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
-  Serial.println(analogTemperature);
-  delay(500);
+
 }
 ```
 
@@ -378,13 +176,6 @@ void setup() {
 }
 
 void loop() {
-  // Lees de temperatuursensor uit
-  int analogCounts = analogRead(A0);
-  float analogVoltage = (analogCounts * 5.0) / 1024.0;
-  const float voltageAtZeroDegrees = 400 / 1000.0;
-  const float temperatureCoefficient = 19.53 / 1000.0;
-  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
-
   // Lees de datum en tijd uit
   DateTime now = rtc.now();
   
@@ -507,13 +298,6 @@ void setup() {
 }
 
 void loop() {
-  // Lees de temperatuursensor uit
-  int analogCounts = analogRead(A0);
-  float analogVoltage = (analogCounts * 5.0) / 1024.0;
-  const float voltageAtZeroDegrees = 400 / 1000.0;
-  const float temperatureCoefficient = 19.53 / 1000.0;
-  float analogTemperature = (analogVoltage - voltageAtZeroDegrees) / temperatureCoefficient;
-
   // Lees de datum en tijd uit
   DateTime now = rtc.now();
   
@@ -529,11 +313,9 @@ void loop() {
   Serial.print(now.minute(), DEC);
   Serial.print(":");
   Serial.print(now.second(), DEC);
-  Serial.print(" ");
-  Serial.println(analogTemperature);
-  
-  // Schrijf het resultaat naar een bestand op de geheugenkaart
-  File dataFile = SD.open("temperatuur.txt", FILE_WRITE);
+
+  // Schrijf data naar een bestand op de geheugenkaart
+  File dataFile = SD.open("test.txt", FILE_WRITE);
   if (dataFile) {
     dataFile.print(now.day(), DEC);
     dataFile.print("-");
@@ -547,7 +329,7 @@ void loop() {
     dataFile.print(":");
     dataFile.print(now.second(), DEC);
     dataFile.print(" ");
-    dataFile.println(analogTemperature);
+    dataFile.println("Hello world");
     dataFile.close();
   } else {
     Serial.println("Temperatuur opslaan op SD kaart is mislukt, bestand openen mislukt");

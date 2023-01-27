@@ -1,0 +1,1377 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 700 599.99997"
+   version="1.1"
+   id="svg1062"
+   sodipodi:docname="uno-pinout-datashield.svg"
+   width="700"
+   height="600"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1064"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.83671554"
+     inkscape:cx="145.80822"
+     inkscape:cy="375.27688"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1062" />
+  <defs
+     id="defs642">
+    <style
+       id="style640">.a{fill:#80cbc4;}.a,.b,.c,.d,.e,.f{stroke:#000;}.a,.b,.c,.d,.e,.f,.i,.j,.k,.l,.m,.n,.o{stroke-miterlimit:10;}.a,.b,.c,.d,.e,.f,.i,.j,.m,.n,.o{stroke-width:0.25px;}.b,.h,.p{fill:#fff;}.d,.i{fill:#b3b3b3;}.e,.g{fill:#333;}.f{fill:#4d4d4d;}.i,.l{stroke:#999;}.j{fill:#9e9e9e;stroke:#616161;}.k,.l{fill:none;stroke-width:0.5px;}.k{stroke:#666;}.m{fill:#607d8b;stroke:#455a64;}.n{fill:#ff9800;stroke:#f57c00;}.o{fill:#f44336;stroke:#d32f2f;}.p{font-size:2.66px;font-family:YuGothicUI-Bold, Yu Gothic UI;font-weight:700;}.q{letter-spacing:-0.02em;}</style>
+  </defs>
+  <g
+     id="g2249"
+     transform="matrix(3.8675748,0,0,3.8675748,-18.527672,-74.827164)">
+    <g
+       id="g1483"
+       transform="translate(32.812574,26.915298)">
+      <path
+         class="a"
+         d="m 19.71,15.5 v 117.86 a 1.62,1.62 0 0 0 1.84,1.84 h 2.83 l 4.68,4.67 h 60.3 l 4.67,-4.67 h 21 l 2.8,-2.81 V 15.5 a 1.63,1.63 0 0 0 -1.84,-1.84 H 21.55 a 1.62,1.62 0 0 0 -1.84,1.84 z"
+         id="path644" />
+      <circle
+         class="b"
+         cx="24.379999"
+         cy="39.369999"
+         r="2.9400001"
+         id="circle646" />
+      <circle
+         class="b"
+         cx="113.2"
+         cy="41.490002"
+         r="2.9400001"
+         id="circle648" />
+      <circle
+         class="b"
+         cx="85.150002"
+         cy="135.07001"
+         r="2.9400001"
+         id="circle650" />
+      <circle
+         class="b"
+         cx="33.73"
+         cy="135.07001"
+         r="2.9400001"
+         id="circle652" />
+      <rect
+         class="c"
+         x="26.370001"
+         y="8.2399998"
+         width="14.69"
+         height="27.33"
+         id="rect654" />
+      <rect
+         class="c"
+         x="24.450001"
+         y="8.2399998"
+         width="18.52"
+         height="5.4200001"
+         id="rect656" />
+      <rect
+         class="d"
+         x="79.68"
+         y="0.13"
+         width="22.33"
+         height="30.33"
+         id="rect658" />
+      <rect
+         class="d"
+         x="104.9"
+         y="19.24"
+         width="11.78"
+         height="11.78"
+         id="rect660" />
+      <rect
+         class="e"
+         x="78.790001"
+         y="45.459999"
+         width="9.3000002"
+         height="9.3000002"
+         id="rect662" />
+      <rect
+         class="d"
+         x="81.459999"
+         y="63.009998"
+         width="2.5599999"
+         height="4.3299999"
+         id="rect664" />
+      <rect
+         class="d"
+         x="85.75"
+         y="63.009998"
+         width="2.5599999"
+         height="4.3299999"
+         id="rect666" />
+      <rect
+         class="d"
+         x="96.220001"
+         y="62.959999"
+         width="2.5599999"
+         height="4.3299999"
+         id="rect668" />
+      <rect
+         class="e"
+         x="42.900002"
+         y="68.239998"
+         width="13"
+         height="65.220001"
+         id="rect670" />
+      <rect
+         class="d"
+         x="85.75"
+         y="119.54"
+         width="2.5599999"
+         height="4.3299999"
+         id="rect672" />
+      <polygon
+         class="f"
+         points="108.34,40.32 106.34,40.32 103.52,40.32 101.52,40.32 100.1,41.74 100.1,43.74 101.52,45.15 103.52,45.15 106.34,45.15 108.34,45.15 109.76,43.74 109.76,41.74 "
+         id="polygon674" />
+      <circle
+         class="b"
+         cx="107.34"
+         cy="42.740002"
+         r="1.5"
+         id="circle676" />
+      <circle
+         class="b"
+         cx="102.52"
+         cy="42.740002"
+         r="1.5"
+         id="circle678" />
+      <polygon
+         class="f"
+         points="108.34,45.15 106.34,45.15 103.52,45.15 101.52,45.15 100.1,46.57 100.1,48.57 101.52,49.98 103.52,49.98 106.34,49.98 108.34,49.98 109.76,48.57 109.76,46.57 "
+         id="polygon680" />
+      <circle
+         class="b"
+         cx="107.34"
+         cy="47.57"
+         r="1.5"
+         id="circle682" />
+      <circle
+         class="b"
+         cx="102.52"
+         cy="47.57"
+         r="1.5"
+         id="circle684" />
+      <polygon
+         class="f"
+         points="108.34,49.98 106.34,49.98 103.52,49.98 101.52,49.98 100.1,51.4 100.1,53.4 101.52,54.81 103.52,54.81 106.34,54.81 108.34,54.81 109.76,53.4 109.76,51.4 "
+         id="polygon686" />
+      <circle
+         class="b"
+         cx="107.34"
+         cy="52.400002"
+         r="1.5"
+         id="circle688" />
+      <circle
+         class="b"
+         cx="102.52"
+         cy="52.400002"
+         r="1.5"
+         id="circle690" />
+      <polygon
+         class="f"
+         points="77.7,137.33 77.7,135.33 77.7,132.5 77.7,130.5 76.29,129.09 74.29,129.09 72.87,130.5 72.87,132.5 72.87,135.33 72.87,137.33 74.29,138.74 76.29,138.74 "
+         id="polygon692" />
+      <circle
+         class="b"
+         cx="75.290001"
+         cy="136.33"
+         r="1.5"
+         id="circle694" />
+      <circle
+         class="b"
+         cx="75.290001"
+         cy="131.5"
+         r="1.5"
+         id="circle696" />
+      <polygon
+         class="f"
+         points="72.87,137.33 72.87,135.33 72.87,132.5 72.87,130.5 71.46,129.09 69.46,129.09 68.04,130.5 68.04,132.5 68.04,135.33 68.04,137.33 69.46,138.74 71.46,138.74 "
+         id="polygon698" />
+      <circle
+         class="b"
+         cx="70.459999"
+         cy="136.33"
+         r="1.5"
+         id="circle700" />
+      <circle
+         class="b"
+         cx="70.459999"
+         cy="131.5"
+         r="1.5"
+         id="circle702" />
+      <polygon
+         class="f"
+         points="68.04,137.33 68.04,135.33 68.04,132.5 68.04,130.5 66.63,129.09 64.63,129.09 63.22,130.5 63.22,132.5 63.22,135.33 63.22,137.33 64.63,138.74 66.63,138.74 "
+         id="polygon704" />
+      <circle
+         class="b"
+         cx="65.629997"
+         cy="136.33"
+         r="1.5"
+         id="circle706" />
+      <circle
+         class="b"
+         cx="65.629997"
+         cy="131.5"
+         r="1.5"
+         id="circle708" />
+      <circle
+         class="b"
+         cx="110.79"
+         cy="25.129999"
+         r="3.26"
+         id="circle710" />
+      <rect
+         class="g"
+         x="111.27"
+         y="45.299999"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect712" />
+      <rect
+         class="h"
+         x="112.68"
+         y="46.709999"
+         width="2"
+         height="2"
+         id="rect714" />
+      <rect
+         class="g"
+         x="111.27"
+         y="50.130001"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect716" />
+      <rect
+         class="h"
+         x="112.68"
+         y="51.540001"
+         width="2"
+         height="2"
+         id="rect718" />
+      <rect
+         class="g"
+         x="111.27"
+         y="54.959999"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect720" />
+      <rect
+         class="h"
+         x="112.68"
+         y="56.369999"
+         width="2"
+         height="2"
+         id="rect722" />
+      <rect
+         class="g"
+         x="111.27"
+         y="59.790001"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect724" />
+      <rect
+         class="h"
+         x="112.68"
+         y="61.200001"
+         width="2"
+         height="2"
+         id="rect726" />
+      <rect
+         class="g"
+         x="111.27"
+         y="64.620003"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect728" />
+      <rect
+         class="h"
+         x="112.68"
+         y="66.029999"
+         width="2"
+         height="2"
+         id="rect730" />
+      <rect
+         class="g"
+         x="111.27"
+         y="69.449997"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect732" />
+      <rect
+         class="h"
+         x="112.68"
+         y="70.860001"
+         width="2"
+         height="2"
+         id="rect734" />
+      <rect
+         class="g"
+         x="111.27"
+         y="74.279999"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect736" />
+      <rect
+         class="h"
+         x="112.68"
+         y="75.690002"
+         width="2"
+         height="2"
+         id="rect738" />
+      <rect
+         class="g"
+         x="111.27"
+         y="79.110001"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect740" />
+      <rect
+         class="h"
+         x="112.68"
+         y="80.519997"
+         width="2"
+         height="2"
+         id="rect742" />
+      <rect
+         class="g"
+         x="111.27"
+         y="95.400002"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect744" />
+      <rect
+         class="h"
+         x="112.68"
+         y="96.82"
+         width="2"
+         height="2"
+         id="rect746" />
+      <rect
+         class="g"
+         x="111.27"
+         y="100.23"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect748" />
+      <rect
+         class="h"
+         x="112.68"
+         y="101.65"
+         width="2"
+         height="2"
+         id="rect750" />
+      <rect
+         class="g"
+         x="111.27"
+         y="105.06"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect752" />
+      <rect
+         class="h"
+         x="112.68"
+         y="106.48"
+         width="2"
+         height="2"
+         id="rect754" />
+      <rect
+         class="g"
+         x="111.27"
+         y="109.89"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect756" />
+      <rect
+         class="h"
+         x="112.68"
+         y="111.31"
+         width="2"
+         height="2"
+         id="rect758" />
+      <rect
+         class="g"
+         x="111.27"
+         y="114.72"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect760" />
+      <rect
+         class="h"
+         x="112.68"
+         y="116.14"
+         width="2"
+         height="2"
+         id="rect762" />
+      <rect
+         class="g"
+         x="111.27"
+         y="119.55"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect764" />
+      <rect
+         class="h"
+         x="112.68"
+         y="120.97"
+         width="2"
+         height="2"
+         id="rect766" />
+      <rect
+         class="g"
+         x="111.27"
+         y="124.38"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect768" />
+      <rect
+         class="h"
+         x="112.68"
+         y="125.8"
+         width="2"
+         height="2"
+         id="rect770" />
+      <rect
+         class="g"
+         x="111.27"
+         y="129.21001"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect772" />
+      <rect
+         class="h"
+         x="112.68"
+         y="130.63"
+         width="2"
+         height="2"
+         id="rect774" />
+      <rect
+         class="g"
+         x="111.27"
+         y="83.940002"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect776" />
+      <rect
+         class="h"
+         x="112.68"
+         y="85.349998"
+         width="2"
+         height="2"
+         id="rect778" />
+      <rect
+         class="g"
+         x="111.27"
+         y="88.769997"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect780" />
+      <rect
+         class="h"
+         x="112.68"
+         y="90.18"
+         width="2"
+         height="2"
+         id="rect782" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="63.419998"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect784" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="64.830002"
+         width="2"
+         height="2"
+         id="rect786" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="68.25"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect788" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="69.660004"
+         width="2"
+         height="2"
+         id="rect790" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="73.080002"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect792" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="74.489998"
+         width="2"
+         height="2"
+         id="rect794" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="77.910004"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect796" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="79.32"
+         width="2"
+         height="2"
+         id="rect798" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="82.739998"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect800" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="84.150002"
+         width="2"
+         height="2"
+         id="rect802" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="87.57"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect804" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="88.980003"
+         width="2"
+         height="2"
+         id="rect806" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="92.400002"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect808" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="93.809998"
+         width="2"
+         height="2"
+         id="rect810" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="97.230003"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect812" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="98.639999"
+         width="2"
+         height="2"
+         id="rect814" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="105.28"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect816" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="106.7"
+         width="2"
+         height="2"
+         id="rect818" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="110.11"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect820" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="111.53"
+         width="2"
+         height="2"
+         id="rect822" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="114.94"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect824" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="116.36"
+         width="2"
+         height="2"
+         id="rect826" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="119.77"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect828" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="121.19"
+         width="2"
+         height="2"
+         id="rect830" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="124.6"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect832" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="126.02"
+         width="2"
+         height="2"
+         id="rect834" />
+      <rect
+         class="g"
+         x="20.709999"
+         y="129.42999"
+         width="4.8299999"
+         height="4.8299999"
+         id="rect836" />
+      <rect
+         class="h"
+         x="22.129999"
+         y="130.85001"
+         width="2"
+         height="2"
+         id="rect838" />
+      <circle
+         class="b"
+         cx="96.940002"
+         cy="47.57"
+         r="1.5"
+         id="circle840" />
+      <circle
+         class="b"
+         cx="92.110001"
+         cy="47.57"
+         r="1.5"
+         id="circle842" />
+      <circle
+         class="b"
+         cx="96.940002"
+         cy="52.400002"
+         r="1.5"
+         id="circle844" />
+      <circle
+         class="b"
+         cx="92.110001"
+         cy="52.400002"
+         r="1.5"
+         id="circle846" />
+      <rect
+         class="i"
+         x="67.900002"
+         y="65.709999"
+         width="4.1100001"
+         height="2.53"
+         id="rect848" />
+      <rect
+         class="i"
+         x="67.900002"
+         y="62.009998"
+         width="4.1100001"
+         height="2.53"
+         id="rect850" />
+      <path
+         class="j"
+         d="m 125.18,60.62 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path852"
+         style="fill:#ffffff" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="131.63"
+         x2="123.68"
+         y2="131.63"
+         id="line854" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="126.8"
+         x2="123.68"
+         y2="126.8"
+         id="line856" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="121.97"
+         x2="123.68"
+         y2="121.97"
+         id="line858" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="117.14"
+         x2="123.68"
+         y2="117.14"
+         id="line860" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="112.31"
+         x2="123.68"
+         y2="112.31"
+         id="line862" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="107.48"
+         x2="123.68"
+         y2="107.48"
+         id="line864" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="102.65"
+         x2="123.68"
+         y2="102.65"
+         id="line866" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="97.82"
+         x2="123.68"
+         y2="97.82"
+         id="line868" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="47.709999"
+         x2="123.68"
+         y2="47.709999"
+         id="line870" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="52.540001"
+         x2="123.68"
+         y2="52.540001"
+         id="line872" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="57.369999"
+         x2="123.68"
+         y2="57.369999"
+         id="line874" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="62.200001"
+         x2="123.68"
+         y2="62.200001"
+         id="line876" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="67.029999"
+         x2="123.68"
+         y2="67.029999"
+         id="line878" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="71.860001"
+         x2="123.68"
+         y2="71.860001"
+         id="line880" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="76.690002"
+         x2="123.68"
+         y2="76.690002"
+         id="line882" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="81.519997"
+         x2="123.68"
+         y2="81.519997"
+         id="line884" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="86.349998"
+         x2="123.68"
+         y2="86.349998"
+         id="line886" />
+      <line
+         class="k"
+         x1="113.68"
+         y1="91.18"
+         x2="123.68"
+         y2="91.18"
+         id="line888" />
+      <path
+         class="k"
+         d="M 10.12,65.84"
+         id="path890"
+         style="fill:#000000" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="70.660004"
+         x2="13.13"
+         y2="70.660004"
+         id="line894" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="75.489998"
+         x2="13.13"
+         y2="75.489998"
+         id="line896" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="80.32"
+         x2="13.13"
+         y2="80.32"
+         id="line898" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="85.150002"
+         x2="13.13"
+         y2="85.150002"
+         id="line900" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="89.980003"
+         x2="13.13"
+         y2="89.980003"
+         id="line902" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="94.809998"
+         x2="13.13"
+         y2="94.809998"
+         id="line904" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="99.639999"
+         x2="13.13"
+         y2="99.639999"
+         id="line906" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="107.7"
+         x2="13.13"
+         y2="107.7"
+         id="line908" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="112.53"
+         x2="13.13"
+         y2="112.53"
+         id="line910" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="117.36"
+         x2="13.13"
+         y2="117.36"
+         id="line912" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="122.19"
+         x2="13.13"
+         y2="122.19"
+         id="line914" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="127.02"
+         x2="13.13"
+         y2="127.02"
+         id="line916" />
+      <line
+         class="l"
+         x1="23.129999"
+         y1="131.85001"
+         x2="13.13"
+         y2="131.85001"
+         id="line918" />
+      <path
+         class="n"
+         d="m 1.62,69.13 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 1 0 0,-3 z"
+         id="path922"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 1.62,74 a 1.5,1.5 0 1 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path924"
+         style="fill:#ffffff" />
+      <path
+         class="o"
+         d="m 1.62,78.77 a 1.5,1.5 0 1 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path926"
+         style="fill:#ffffff" />
+      <path
+         class="o"
+         d="m 1.62,83.72 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 1 0 0,-3 z"
+         id="path928"
+         style="fill:#ffffff" />
+      <path
+         class="j"
+         d="m 1.62,88.55 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 1 0 0,-3 z"
+         id="path930"
+         style="fill:#ffffff" />
+      <path
+         class="j"
+         d="m 1.62,93.38 a 1.5,1.5 0 1 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path932"
+         style="fill:#ffffff" />
+      <path
+         class="o"
+         d="m 1.62,98.33 a 1.5,1.5 0 1 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path934"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 1.62,106.13 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 1 0 0,-3 z"
+         id="path936"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 1.62,110.94 a 1.5,1.5 0 1 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path938"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 1.62,115.89 a 1.5,1.5 0 1 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path940"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 1.62,120.72 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 1 0 0,-3 z"
+         id="path942"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 1.62,125.55 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 1 0 0,-3 z"
+         id="path944"
+         style="fill:#00ff00" />
+      <path
+         class="n"
+         d="m 1.62,130.38 a 1.5,1.5 0 1 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path946"
+         style="fill:#00ff00" />
+      <path
+         class="n"
+         d="m 125.18,46.07 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path948"
+         style="fill:#00ff00" />
+      <path
+         class="n"
+         d="m 125.18,51.03 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path950"
+         style="fill:#00ff00" />
+      <path
+         class="n"
+         d="m 125.18,55.86 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path952"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 125.18,65.58 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path954"
+         style="fill:#0000ff" />
+      <path
+         class="n"
+         d="m 125.18,70.41 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path956"
+         style="fill:#0000ff" />
+      <path
+         class="n"
+         d="m 125.18,75.24 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path958"
+         style="fill:#0000ff" />
+      <path
+         class="n"
+         d="m 125.18,80.19 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path960"
+         style="fill:#0000ff" />
+      <path
+         class="n"
+         d="m 125.18,84.8 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path962"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 125.18,89.75 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path964"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 125.18,96.28 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path966"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 125.18,101.05 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path968"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 125.18,106 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path970"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 125.18,110.83 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path972"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 125.18,115.66 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path974"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 125.18,120.62 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path976"
+         style="fill:#ffffff" />
+      <path
+         class="n"
+         d="m 125.18,125.22 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path978"
+         style="fill:#ff00ff" />
+      <path
+         class="n"
+         d="m 125.18,130.18 a 1.5,1.5 0 0 0 0,3 h 10 a 1.5,1.5 0 0 0 0,-3 z"
+         id="path980"
+         style="fill:#ff00ff" />
+      <text
+         class="p"
+         id="text982"
+         style="fill:#000000"
+         x="4.7800002"
+         y="66.629997">NC</text>
+      <text
+         class="p"
+         id="text984"
+         style="fill:#000000"
+         x="3.04"
+         y="71.519997">IOREF</text>
+      <text
+         class="p"
+         id="text986"
+         style="fill:#000000"
+         x="2.96"
+         y="76.400002">RESET</text>
+      <text
+         class="p"
+         id="text988"
+         style="fill:#000000"
+         x="3.3699999"
+         y="81.290001">+3V3</text>
+      <text
+         class="p"
+         id="text990"
+         style="fill:#000000"
+         x="4.1100001"
+         y="86.18">+5V</text>
+      <text
+         class="p"
+         id="text992"
+         style="fill:#000000"
+         x="3.72"
+         y="91.07">GND</text>
+      <text
+         class="p"
+         id="text994"
+         style="fill:#000000"
+         x="3.72"
+         y="95.959999">GND</text>
+      <text
+         class="p"
+         id="text996"
+         style="fill:#000000"
+         x="4.3600001"
+         y="100.85">VIN</text>
+      <text
+         class="p"
+         id="text998"
+         style="fill:#000000"
+         x="1.45"
+         y="108.56">A0 / D14</text>
+      <text
+         class="p"
+         id="text1000"
+         style="fill:#000000"
+         x="1.6799999"
+         y="113.41">A1 / D15</text>
+      <text
+         class="p"
+         id="text1002"
+         style="fill:#000000"
+         x="1.47"
+         y="118.27">A2 / D16</text>
+      <text
+         class="p"
+         id="text1004"
+         style="fill:#000000"
+         x="1.5"
+         y="123.13">A3 / D17</text>
+      <text
+         class="p"
+         id="text1006"
+         x="1.45"
+         y="127.99">A4 / D18</text>
+      <text
+         class="p"
+         id="text1008"
+         x="1.47"
+         y="132.85001">A5 / D19</text>
+      <text
+         class="p"
+         id="text1010"
+         x="124.46"
+         y="48.459999"
+         style="fill:#ffffff">D19 / SCL</text>
+      <text
+         class="p"
+         id="text1016"
+         style="fill:#ffffff"
+         x="124.11"
+         y="53.32">D18 / S<tspan
+   class="q"
+   x="132.59"
+   y="53.32"
+   id="tspan1012"
+   style="fill:#ffffff">D</tspan><tspan
+   x="134.46001"
+   y="53.32"
+   id="tspan1014"
+   style="fill:#ffffff">A</tspan></text>
+      <text
+         class="p"
+         id="text1018"
+         style="fill:#000000"
+         x="127.1"
+         y="58.18">AREF</text>
+      <text
+         class="p"
+         id="text1020"
+         style="fill:#000000"
+         x="127.28"
+         y="63.029999">GND</text>
+      <text
+         class="p"
+         id="text1022"
+         style="fill:#ffffff"
+         x="127.95"
+         y="67.889999">D13</text>
+      <text
+         class="p"
+         id="text1024"
+         style="fill:#ffffff"
+         x="127.95"
+         y="72.75">D12</text>
+      <text
+         class="p"
+         id="text1026"
+         style="fill:#ffffff"
+         x="128.14999"
+         y="77.599998">D11</text>
+      <text
+         class="p"
+         id="text1028"
+         style="fill:#ffffff"
+         x="127.95"
+         y="82.459999">D10</text>
+      <text
+         class="p"
+         id="text1030"
+         style="fill:#000000"
+         x="128.48"
+         y="87.32">D9</text>
+      <text
+         class="p"
+         id="text1032"
+         style="fill:#000000"
+         x="128.49001"
+         y="92.169998">D8</text>
+      <text
+         class="p"
+         id="text1034"
+         style="fill:#000000"
+         x="128.50999"
+         y="98.690002">D7</text>
+      <text
+         class="p"
+         id="text1036"
+         style="fill:#000000"
+         x="128.48"
+         y="103.54">D6</text>
+      <text
+         class="p"
+         id="text1038"
+         style="fill:#000000"
+         x="128.49001"
+         y="108.39">D5</text>
+      <text
+         class="p"
+         id="text1040"
+         style="fill:#000000"
+         x="128.46001"
+         y="113.23">D4</text>
+      <text
+         class="p"
+         id="text1042"
+         style="fill:#000000"
+         x="128.49001"
+         y="118.08">D3</text>
+      <text
+         class="p"
+         id="text1044"
+         style="fill:#000000"
+         x="128.49001"
+         y="122.93">D2</text>
+      <text
+         class="p"
+         id="text1046"
+         style="fill:#ffffff"
+         x="125.85"
+         y="127.78">D1 / TX</text>
+      <text
+         class="p"
+         id="text1048"
+         style="fill:#ffffff"
+         x="125.55"
+         y="132.62">D0 / RX</text>
+      <text
+         class="p"
+         id="text1050"
+         style="fill:#000000"
+         x="126.66"
+         y="118.08">~</text>
+      <text
+         class="p"
+         id="text1052"
+         style="fill:#000000"
+         x="126.66"
+         y="108.39">~</text>
+      <text
+         class="p"
+         id="text1054"
+         style="fill:#000000"
+         x="126.66"
+         y="103.54">~</text>
+      <text
+         class="p"
+         id="text1056"
+         style="fill:#ffffff"
+         x="125.95"
+         y="82.519997">~</text>
+      <text
+         class="p"
+         id="text1058"
+         style="fill:#ffffff"
+         x="125.95"
+         y="77.599998">~</text>
+      <text
+         class="p"
+         id="text1060"
+         style="fill:#000000"
+         x="126.66"
+         y="87.32">~</text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:'Commodore 64';-inkscape-font-specification:'Commodore 64, ';letter-spacing:0px;word-spacing:0px"
+       x="6.6312456"
+       y="160.08549"
+       id="text1487"><tspan
+         sodipodi:role="line"
+         id="tspan1485"
+         x="6.6312456"
+         y="160.08549"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.6667px;font-family:Hack;-inkscape-font-specification:Hack">Klok</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:'Commodore 64';-inkscape-font-specification:'Commodore 64, ';letter-spacing:0px;word-spacing:0px"
+       x="171.04588"
+       y="104.52815"
+       id="text1487-3"><tspan
+         sodipodi:role="line"
+         id="tspan1485-6"
+         x="171.04588"
+         y="104.52815"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.6667px;font-family:Hack;-inkscape-font-specification:Hack">SD</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:'Commodore 64';-inkscape-font-specification:'Commodore 64, ';letter-spacing:0px;word-spacing:0px"
+       x="170.46104"
+       y="159.97504"
+       id="text1487-3-7"><tspan
+         sodipodi:role="line"
+         id="tspan1485-6-5"
+         x="170.46104"
+         y="159.97504"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.6667px;font-family:Hack;-inkscape-font-specification:Hack">PC</tspan></text>
+  </g>
+</svg>
